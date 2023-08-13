@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
+const scrollToTop = () => {
+  window.scrollTo(0, 0); // Scrolls to the top of the page
+};
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo(0, 0); // Scrolls to the top of the page
-  };
   return (
     <footer className="px-4 py-10 dark:bg-gray-800 dark:text-gray-400">
       <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">

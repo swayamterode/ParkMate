@@ -1,4 +1,4 @@
-import Footer from "./Fotter";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 const Terms = () => {
   return (

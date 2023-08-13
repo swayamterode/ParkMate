@@ -1,6 +1,6 @@
 
 import Navbar from "./Navbar";
-import Footer from "./Fotter";
+import Footer from "./Footer";
 
 const About = () => {
   return (

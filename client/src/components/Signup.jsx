@@ -1,13 +1,13 @@
-import React from 'react'
-import Navbar from './Navbar'
-import { Link } from 'react-router-dom'
+import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Signup = () => {
   return (
     <>
-    <Navbar/>
-    <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
-        <div className=" flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
+      <Navbar />
+      <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
+        <div className=" mt-20 flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
             <p className="text-sm dark:text-gray-400">
@@ -26,6 +26,7 @@ const Signup = () => {
                   id="email"
                   placeholder="akon.dalvis921@gmail.com"
                   className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                  required
                 />
               </div>
               <div>
@@ -67,7 +68,7 @@ const Signup = () => {
                 </button>
               </div>
               <p className="px-6 text-sm text-center dark:text-gray-400">
-                Already have an account? 
+                Already have an account?
                 <Link
                   rel="noopener noreferrer"
                   to="/login"
@@ -81,8 +82,9 @@ const Signup = () => {
           </form>
         </div>
       </div>
+      <Footer/>
     </>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
