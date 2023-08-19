@@ -61,11 +61,13 @@ const Signup = () => {
       <Navbar />
       <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
         <div className=" mt-20 flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
-          <img
-            src="../src/assets/"
-            alt="logo"
-            className=" flex justify-center"
-          />
+          <div className="flex justify-center items-center">
+            <img
+              src="../src/assets/"
+              alt="logo"
+              className=" flex justify-center"
+            />
+          </div>
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
             <p className="text-sm dark:text-gray-300">
