@@ -11,7 +11,7 @@ const Navbar = () => {
   //   setIsUserDropdownOpen(!isUserDropdownOpen);
   // };
   return (
-    <nav className="border-gray-200 backdrop-blur-md bg-gray-900/30 fixed w-full ">
+    <nav className="border-gray-200 backdrop-blur-md bg-gray-900/40 fixed w-full ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
           <img
@@ -140,7 +140,7 @@ const Navbar = () => {
           } w-full md:flex md:w-auto md:order-1`}
           id="navbar-user"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800/30 dark:border-gray-700">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900/0 dark:border-gray-700">
             <li>
               <Link
                 spy={true}

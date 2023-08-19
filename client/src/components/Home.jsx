@@ -12,9 +12,10 @@ const Home = () => {
   return (
     <>
       <Navbar />
+
       {/* Hero Section */}
-      <div className="sm:py-4 bg-gray-800  py-14" name="home">
-        <section className="dark:bg-gray-800 dark:text-gray-100">
+      <div className="sm:py-4 bg-gray-900  py-14" name="home">
+        <section className="dark:bg-gray-900 dark:text-gray-100">
           <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
             <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
               <h1 className="text-4xl font-bold leading-tight sm:text-6xl">
@@ -45,7 +46,7 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
-                src="../src/assets/car4.svg"
+                src="../src/assets/Parking-animate.svg"
                 alt="World Card"
                 className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
               />
