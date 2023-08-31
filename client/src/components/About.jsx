@@ -1,4 +1,3 @@
-
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -106,18 +105,18 @@ const About = () => {
               {/* Laxmi Data */}
               <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
                 <img
-                  alt="Laxmikanth"
+                  alt="Laxmikant"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                   src="../src/assets/laxmi.png"
                 />
                 <div className="flex-1 my-4">
                   <p className="text-xl font-semibold leadi">Laxmikant Y</p>
-                  <p>Visual Designer</p>
+                  <p>IoT Developer</p>
                 </div>
                 <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="mailto:laxmikant.yelgandrawar7114@gmail.com"
                     title="Email"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
@@ -133,8 +132,9 @@ const About = () => {
                   </a>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="https://twitter.com/_Lucky_7114"
                     title="X"
+                    target="_blank"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
                     <svg
@@ -148,8 +148,9 @@ const About = () => {
                   </a>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="https://www.linkedin.com/in/laxmikant-yelgandrawar-42272623b/"
                     title="LinkedIn"
+                    target="_blank"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
                     <svg
@@ -163,8 +164,9 @@ const About = () => {
                   </a>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="https://github.com/laxmikant7114"
                     title="GitHub"
+                    target="_blank"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
                     <svg
@@ -178,8 +180,6 @@ const About = () => {
                   </a>
                 </div>
               </div>
-
-              {/* Laxmi End Data */}
 
               {/* Pachange Data here! */}
               <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
@@ -260,7 +260,6 @@ const About = () => {
               </div>
 
               {/* Bhavsar Data Here! */}
-
               <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
                 <img
                   alt=""
@@ -274,7 +273,7 @@ const About = () => {
                 <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="mailto:akankshasujal007@gmail.com"
                     target="_blank"
                     title="Email"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
@@ -306,8 +305,9 @@ const About = () => {
                   </a>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="https://www.linkedin.com/in/akanksha-bhavsar-7b2630223/ "
                     title="LinkedIn"
+                    target="_blank"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
                     <svg
@@ -321,8 +321,9 @@ const About = () => {
                   </a>
                   <a
                     rel="noopener noreferrer"
-                    href="#"
+                    href="https://github.com/KANKSHA09"
                     title="GitHub"
+                    target="_blank"
                     className="dark:text-gray-900 hover:dark:text-sky-400"
                   >
                     <svg
@@ -340,7 +341,7 @@ const About = () => {
           </div>
         </section>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
