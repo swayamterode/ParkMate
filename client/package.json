@@ -4,20 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
     "axios": "^1.5.0",
-    "heroicons": "^2.0.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2",
-    "react-scroll": "^1.8.9",
-    "tailwindcss-react": "^0.0.0"
+    "react-icons": "^4.10.1",
+    "react-router-dom": "^6.14.2"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.4",
@@ -31,6 +28,7 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-qrcode": "^0.2.2"
   }
 }

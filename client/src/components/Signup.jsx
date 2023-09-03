@@ -61,19 +61,27 @@ const Signup = () => {
   };
 
   const [showPopup, setShowPopup] = useState(false);
+  const [userExists, setUserExists] = useState(false); // Initialize userExists state
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       // Form is valid, perform desired action (e.g., submit to server)
       axios
-        .post("http://localhost:3001/user_info", formData)
-        .then(() => {
-          setShowPopup(true); // Show the success popup
-          setTimeout(() => {
-            setShowPopup(false); // Hide the popup after some time
-            navigate("/login"); // Navigate to the login page
-          }, 2000); // Adjust the time as needed
+        .post("http://localhost:3001/register", formData)
+        .then((response) => {
+          if (response.data.message === "User already exists") {
+            setUserExists(true); // Set userExists state to true if the user already exists
+            setTimeout(() => {
+              setUserExists(false); // Hide the popup after some time
+            }, 2000); // Adjust the time as needed
+          } else {
+            setShowPopup(true); // Show the success popup
+            setTimeout(() => {
+              setShowPopup(false); // Hide the popup after some time
+              navigate("/vehicle_on_signup"); // Navigate to the login page
+            }, 2000); // Adjust the time as needed
+          }
         })
         .catch((err) => {
           setShowPopup(false); // Hide the loading popup on error
@@ -86,7 +94,7 @@ const Signup = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
-        <div className=" mt-20 w-5/6 flex flex-col max-w-md p-6 rounded-3xl sm:p-10 dark:bg-gray-900 dark:text-gray-100">
+        <div className=" mt-20 w-5/6 flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-900 text-gray-100">
           <div className="flex justify-center items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
@@ -96,7 +104,7 @@ const Signup = () => {
           </div>
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
-            <p className="text-sm dark:text-gray-300">
+            <p className="text-sm text-gray-300">
               Create your account to get started.
             </p>
           </div>
@@ -115,8 +123,8 @@ const Signup = () => {
                   id="username"
                   value={formData.username}
                   onChange={handleChange}
-                  placeholder="Ajay Patil"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                  placeholder="Your full name"
+                  className="w-full text-sm px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
                   required
                 />
                 {errors.username && (
@@ -134,8 +142,8 @@ const Signup = () => {
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="ajaypatil@gmail.com"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                  placeholder="Your email address"
+                  className="w-full text-sm px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
                   required
                 />
                 {errors.email && (
@@ -155,8 +163,8 @@ const Signup = () => {
                   id="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="Eg: Ajay@123"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                  placeholder="Min 8 characters, 1 capital & 1 special character"
+                  className="text-sm w-full  px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm text-bold">
@@ -177,8 +185,8 @@ const Signup = () => {
                   id="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  placeholder="Eg: Ajay@123"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+                  placeholder="Min 8 characters, 1 capital & 1 special character"
+                  className="w-full px-3 text-sm py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100"
                 />
                 {errors.confirmPassword && (
                   <p className="text-red-500 text-sm items-center text-bold">
@@ -191,17 +199,17 @@ const Signup = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full px-8 py-3 font-semibold rounded-md dark:bg-sky-400 dark:text-gray-900"
+                  className="w-full px-8 py-3 font-bold rounded-md bg-sky-400 text-gray-900"
                 >
                   Create Account
                 </button>
               </div>
-              <p className="px-6 text-sm text-center dark:text-gray-400">
+              <p className="px-6 text-sm text-center text-gray-400">
                 Already have an account?
                 <Link
                   rel="noopener noreferrer"
                   to="/login"
-                  className="hover:underline dark:text-sky-400"
+                  className="hover:underline text-sky-400"
                 >
                   Sign in
                 </Link>
@@ -209,61 +217,74 @@ const Signup = () => {
               </p>
               {/* Popup */}
               {showPopup && (
-              <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-90">
-                <div className="bg-gray p-3 rounded shadow">
-                  <div className="flex flex-row items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      x="0px"
-                      y="0px"
-                      width="30"
-                      height="100"
-                      viewBox="0 0 48 48"
-                    >
-                      <linearGradient
-                        id="IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1"
-                        x1="9.858"
-                        x2="38.142"
-                        y1="9.858"
-                        y2="38.142"
-                        gradientUnits="userSpaceOnUse"
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-90">
+                  <div className="bg-gray p-3 rounded shadow">
+                    <div className="flex flex-row items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width="30"
+                        height="100"
+                        viewBox="0 0 48 48"
                       >
-                        <stop offset="0" stop-color="#9dffce"></stop>
-                        <stop offset="1" stop-color="#50d18d"></stop>
-                      </linearGradient>
-                      <path
-                        fill="url(#IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1)"
-                        d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
-                      ></path>
-                      <linearGradient
-                        id="IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2"
-                        x1="13"
-                        x2="36"
-                        y1="24.793"
-                        y2="24.793"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset=".824" stop-color="#135d36"></stop>
-                        <stop offset=".931" stop-color="#125933"></stop>
-                        <stop offset="1" stop-color="#11522f"></stop>
-                      </linearGradient>
-                      <path
-                        fill="url(#IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2)"
-                        d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414	c0.391-0.391,1.024-0.391,1.414,0L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414	c0.391,0.391,0.391,1.024,0,1.414l-13,13C22.317,33.098,21.683,33.098,21.293,32.707z"
-                      ></path>
-                    </svg>
-                    <p className="text-green-500 font-bold text-lg mb-3 pt-3 ml-2 ">
-                      Success! 🥳 🎉
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center text-center">
-                    <div className="animate-spin rounded-full h-6 w-6 mr- 3 border-t-4 border-green-400"></div>
-                    <p className="ml-2 font-bold text-white">
-                      Redirecting to login page...
-                    </p>
+                        <linearGradient
+                          id="IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1"
+                          x1="9.858"
+                          x2="38.142"
+                          y1="9.858"
+                          y2="38.142"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0" stop-color="#9dffce"></stop>
+                          <stop offset="1" stop-color="#50d18d"></stop>
+                        </linearGradient>
+                        <path
+                          fill="url(#IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1)"
+                          d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+                        ></path>
+                        <linearGradient
+                          id="IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2"
+                          x1="13"
+                          x2="36"
+                          y1="24.793"
+                          y2="24.793"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset=".824" stop-color="#135d36"></stop>
+                          <stop offset=".931" stop-color="#125933"></stop>
+                          <stop offset="1" stop-color="#11522f"></stop>
+                        </linearGradient>
+                        <path
+                          fill="url(#IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2)"
+                          d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414	c0.391-0.391,1.024-0.391,1.414,0L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414	c0.391,0.391,0.391,1.024,0,1.414l-13,13C22.317,33.098,21.683,33.098,21.293,32.707z"
+                        ></path>
+                      </svg>
+                      <p className="text-green-500 font-bold text-lg mb-3 pt-3 ml-2 ">
+                        Success! 🥳 🎉
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center text-center">
+                      <div className="animate-spin rounded-full h-6 w-6 mr- 3 border-t-4 border-green-400"></div>
+                      <p className="ml-2 font-bold text-white">
+                        Redirecting to login page...
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+              {/* User already exists */}
+              {userExists && (
+                <div className="fixed inset-0  flex items-start justify-center z-50">
+                  <div className="bg-gray-950 p-2 px-12 rounded-xl shadow-md flex items-center sm:mt-[72px] mt-20">
+                    {/* svg here */}
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <p className="text-red-600 text-sm font-semibold">
+                        User already exists!
+                      </p>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           </form>

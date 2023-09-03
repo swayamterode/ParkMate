@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import { CheckIcon } from "@heroicons/react/20/solid";
+import {FcCheckmark} from "react-icons/fc";
+
 const includedFeatures = [
   "Private Parking access",
   " 24/7 Security ",
@@ -15,12 +16,12 @@ const Home = () => {
 
       {/* Hero Section */}
       <div className="sm:py-4 bg-gray-900  py-14" name="home">
-        <section className="dark:bg-gray-900 dark:text-gray-100">
+        <section className="bg-gray-900 text-gray-100">
           <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
             <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
               <h1 className="text-4xl font-bold leading-tight sm:text-6xl">
                 Book your
-                <span className="dark:text-sky-400"> Parking </span> Slot Today!
+                <span className="text-sky-400"> Parking </span> Slot Today!
               </h1>
               <p className="mt-6 mb-8 text-xl sm:mb-12">
                 <br className="hidden md:inline lg:hidden" /> Say goodbye to
@@ -31,14 +32,14 @@ const Home = () => {
                 <Link
                   rel="noopener noreferrer"
                   to="/book"
-                  className="px-8 py-3 text-lg font-semibold rounded dark:bg-sky-400 dark:text-gray-900"
+                  className="px-8 py-3 text-lg font-bold rounded bg-sky-400 text-gray-900"
                 >
                   Book Slot
                 </Link>
                 <Link
                   rel="noopener noreferrer"
                   to="/pricing"
-                  className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100"
+                  className="px-8 py-3 text-lg font-bold border rounded border-gray-100"
                 >
                   See Pricing
                 </Link>
@@ -94,7 +95,7 @@ const Home = () => {
               >
                 {includedFeatures.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
-                    <CheckIcon
+                    <FcCheckmark
                       className="h-6 w-5 flex-none text-green-400"
                       aria-hidden="true"
                     />
@@ -121,7 +122,7 @@ const Home = () => {
                     href="#"
                     className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Procced to Pay
+                   Book the slot now!
                   </a>
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company

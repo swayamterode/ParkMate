@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import menu form heroicons/react
+import { AiOutlineClose,AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const toggleMobileMenu = () => {
@@ -10,6 +13,18 @@ const Navbar = () => {
   // const toggleUserDropdown = () => {
   //   setIsUserDropdownOpen(!isUserDropdownOpen);
   // };
+
+  const isLoggedIn = () => {
+    // Check if the "token" item exists in local storage to determine the login state
+    return localStorage.getItem("token") !== null;
+  };
+  const handleLogout = () => {
+    localStorage.clear();
+    // You may want to redirect the user to the login page after logging out
+    navigate("/"); // this was missing so it could not redirect
+    // Add the logic for redirection here.
+  };
+
   return (
     <nav className="border-gray-200 backdrop-blur-md bg-gray-900/40 fixed w-full ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -19,15 +34,23 @@ const Navbar = () => {
             className="h-9 mr-3"
             alt="ParkMate Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
             ParkMate
           </span>
         </Link>
         <div className="flex items-center md:order-2 relative">
-          <div className="  mr-2 text-white px-3 py-1 rounded-full font-bold bg-green-500 hover:bg-green-600 cursor-pointer sm:mr-4">
-            {/* ⚠️ */}
-            <Link to="/login">Login</Link>
-          </div>
+          {isLoggedIn() ? (
+            <div
+              className="mr-2 text-white px-3 py-1 rounded-full font-bold bg-red-500 hover:bg-red-600 cursor-pointer sm:mr-4"
+              onClick={handleLogout}
+            >
+              Logout
+            </div>
+          ) : (
+            <div className="mr-2 text-white px-3 py-1 rounded-full font-bold bg-green-500 hover:bg-green-600 cursor-pointer sm:mr-4">
+              <Link to="/login">Login 👋🏼</Link>
+            </div>
+          )}
           {/* Added relative positioning */}
           {/* <button
             type="button"
@@ -98,38 +121,10 @@ const Navbar = () => {
           >
             <span className="sr-only">Open main menu</span>
             {isMobileMenuOpen ? (
-              <svg
-                className="w-5 h-5 hover:text-sky-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <AiOutlineClose className="w-5 h-5 hover:text-sky-400"/>
             ) : (
               // Conditionally render icon based on the state
-              <svg
-                className="w-5 h-5 hover:text-sky-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="curentColor"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 1h15M1 13h15"
-                />
-              </svg>
+              <AiOutlineMenu className="w-5 h-5 hover:text-sky-400" />
             )}
           </button>
         </div>
@@ -140,7 +135,7 @@ const Navbar = () => {
           } w-full md:flex md:w-auto md:order-1`}
           id="navbar-user"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900/0 dark:border-gray-700">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white bg-gray-800 md:dark:bg-gray-900/0 border-gray-700">
             <li>
               <Link
                 spy={true}
@@ -148,7 +143,7 @@ const Navbar = () => {
                 offset={50}
                 duration={500}
                 to="/"
-                className="block  py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 "
+                className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700"
                 aria-current="page"
               >
                 Home
@@ -157,7 +152,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/book"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700 "
               >
                 Book Parking
               </Link>
@@ -165,7 +160,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/pricing"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700 "
               >
                 Pricing
               </Link>
@@ -173,7 +168,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700 "
               >
                 About Us
               </Link>

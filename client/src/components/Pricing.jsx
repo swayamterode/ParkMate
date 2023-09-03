@@ -1,5 +1,6 @@
-import { CheckIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
+import { FcCheckmark } from "react-icons/fc";
+
 import Navbar from "./Navbar";
 const includedFeatures = [
   "Private Parking access",
@@ -54,7 +55,7 @@ export default function Example() {
               >
                 {includedFeatures.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
-                    <CheckIcon
+                    <FcCheckmark
                       className="h-6 w-5 flex-none text-green-400"
                       aria-hidden="true"
                     />
@@ -81,7 +82,7 @@ export default function Example() {
                     href="#"
                     className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Procced to Pay
+                    Book the slot now!
                   </a>
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company

@@ -21,6 +21,7 @@ const About = () => {
                   alt="swayam"
                   className="self-center flex-shrink-0 w-24  h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                   src="../src/assets/swym.png"
+                  loading="lazy"
                 />
                 <div className="flex-1 my-4">
                   <p className="text-xl font-semibold leadi">Swayam Terode</p>
@@ -108,6 +109,7 @@ const About = () => {
                   alt="Laxmikant"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                   src="../src/assets/laxmi.png"
+                  loading="lazy"
                 />
                 <div className="flex-1 my-4">
                   <p className="text-xl font-semibold leadi">Laxmikant Y</p>
@@ -187,6 +189,7 @@ const About = () => {
                   alt="Prathamesh"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                   src="../src/assets/pachange.png"
+                  loading="lazy"
                 />
                 <div className="flex-1 my-4">
                   <p className="text-xl font-semibold leadi">
@@ -265,6 +268,7 @@ const About = () => {
                   alt=""
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
                   src="../src/assets/bhavsar.png"
+                  loading="lazy"
                 />
                 <div className="flex-1 my-4">
                   <p className="text-xl font-semibold leadi">Akansha Bhavsar</p>

@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
 import Error from "./components/Error";
+import VehicleRegistration from "./components/VehicleRegistration";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/terms" element={<Terms />} />
           <Route exact path="/privacy" element={<Privacy />} />
+          <Route exact path="/vehicle_on_signup" element={<VehicleRegistration />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
