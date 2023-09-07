@@ -5,10 +5,10 @@ const UserNotLoggedIn = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-gray-800">
+      <section className="bg-gray-900">
         <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
           <div className="w-full lg:w-1/2">
-            <p className="mt-8 text-3xl font-medium uppercase text-red-500">
+            <p className="mt-8 text-3xl font-medium uppercase text-red-600">
               Opps! You are not logged in!
             </p>
             <p className="mt-4 text-xl text-gray-400">
@@ -33,7 +33,7 @@ const UserNotLoggedIn = () => {
             </div>
           </div>
 
-          <div className=" relative w-full mt-12 lg:w-1/2 lg:mt-0">
+          <div className="mt-12 lg:w-1/2 lg:mt-0">
             <img
               className="w-full max-w-lg lg:mx-auto"
               src="../src/assets/login-animate.svg"
