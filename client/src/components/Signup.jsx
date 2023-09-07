@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, Link } from "react-router-dom";
+import { FaUserCheck } from "react-icons/fa";
 import Footer from "./Footer";
 import axios from "axios";
+import AlreadySignedin from "./AlreadySignedin";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,7 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -65,6 +68,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       // Form is valid, perform desired action (e.g., submit to server)
       axios
@@ -79,16 +83,25 @@ const Signup = () => {
             setShowPopup(true); // Show the success popup
             setTimeout(() => {
               setShowPopup(false); // Hide the popup after some time
-              navigate("/vehicle_on_signup"); // Navigate to the login page
+              const userId = response.data.userId;
+              localStorage.setItem("userId", userId);
+              navigate(`/vehicle_on_signup`); // Navigate to the vehicle registration page
             }, 2000); // Adjust the time as needed
           }
         })
         .catch((err) => {
           setShowPopup(false); // Hide the loading popup on error
-          console.log(err);
+          console.error(err);
         });
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // User is already logged in, redirect to home or dashboard
+      navigate("/signup_");
+    }
+  }, [navigate]);
 
   return (
     <>
@@ -103,8 +116,8 @@ const Signup = () => {
             />
           </div>
           <div className="mb-8 text-center">
-            <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
-            <p className="text-sm text-gray-300">
+            <h1 className="my-3 text-4xl font-bold">ParkMate</h1>
+            <p className="text-lg text-gray-300">
               Create your account to get started.
             </p>
           </div>
@@ -220,54 +233,15 @@ const Signup = () => {
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-90">
                   <div className="bg-gray p-3 rounded shadow">
                     <div className="flex flex-row items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="30"
-                        height="100"
-                        viewBox="0 0 48 48"
-                      >
-                        <linearGradient
-                          id="IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1"
-                          x1="9.858"
-                          x2="38.142"
-                          y1="9.858"
-                          y2="38.142"
-                          gradientUnits="userSpaceOnUse"
-                        >
-                          <stop offset="0" stop-color="#9dffce"></stop>
-                          <stop offset="1" stop-color="#50d18d"></stop>
-                        </linearGradient>
-                        <path
-                          fill="url(#IMoH7gpu5un5Dx2vID39Ra_pIPl8tqh3igN_gr1)"
-                          d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
-                        ></path>
-                        <linearGradient
-                          id="IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2"
-                          x1="13"
-                          x2="36"
-                          y1="24.793"
-                          y2="24.793"
-                          gradientUnits="userSpaceOnUse"
-                        >
-                          <stop offset=".824" stop-color="#135d36"></stop>
-                          <stop offset=".931" stop-color="#125933"></stop>
-                          <stop offset="1" stop-color="#11522f"></stop>
-                        </linearGradient>
-                        <path
-                          fill="url(#IMoH7gpu5un5Dx2vID39Rb_pIPl8tqh3igN_gr2)"
-                          d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414	c0.391-0.391,1.024-0.391,1.414,0L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414	c0.391,0.391,0.391,1.024,0,1.414l-13,13C22.317,33.098,21.683,33.098,21.293,32.707z"
-                        ></path>
-                      </svg>
+                      <FaUserCheck className="text-green-500 text-2xl " />
                       <p className="text-green-500 font-bold text-lg mb-3 pt-3 ml-2 ">
-                        Success! 🥳 🎉
+                        You&apos;re a ParkMate Member! 🎉🥳
                       </p>
                     </div>
                     <div className="flex items-center justify-center text-center">
                       <div className="animate-spin rounded-full h-6 w-6 mr- 3 border-t-4 border-green-400"></div>
                       <p className="ml-2 font-bold text-white">
-                        Redirecting to login page...
+                        Redirecting to Vehicle Registration Page...
                       </p>
                     </div>
                   </div>

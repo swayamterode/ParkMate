@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import {FcCheckmark} from "react-icons/fc";
+
+import { FcCheckmark } from "react-icons/fc";
 
 const includedFeatures = [
   "Private Parking access",
@@ -9,7 +10,17 @@ const includedFeatures = [
   "Easy payment methods",
 ];
 import Footer from "./Footer";
+
+const scrollToTop = () => {
+  window.scrollTo(0, 0); // Scrolls to the top of the page
+};
+
 const Home = () => {
+  // is loggedIn
+  const isLoggedIn = () => {
+    return localStorage.getItem("token") !== null;
+  };
+
   return (
     <>
       <Navbar />
@@ -29,26 +40,55 @@ const Home = () => {
                 dealing with outdated payment methods.
               </p>
               <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                <Link
-                  rel="noopener noreferrer"
-                  to="/book"
-                  className="px-8 py-3 text-lg font-bold rounded bg-sky-400 text-gray-900"
-                >
-                  Book Slot
-                </Link>
-                <Link
-                  rel="noopener noreferrer"
-                  to="/pricing"
-                  className="px-8 py-3 text-lg font-bold border rounded border-gray-100"
-                >
-                  See Pricing
-                </Link>
+                {!isLoggedIn() ? (
+                  // if logged in
+                  <>
+                    <Link
+                      rel="noopener noreferrer"
+                      to="/login-before-booking"
+                      className="px-8 py-3 text-lg font-bold rounded bg-sky-400 text-gray-900 hover:bg-sky-600 hover:text-gray-100"
+                      onClick={scrollToTop}
+                    >
+                      Book Slot
+                    </Link>
+
+                    <Link
+                      rel="noopener noreferrer"
+                      to="/pricing"
+                      className="px-8 py-3 text-lg font-bold border rounded border-gray-100"
+                      onClick={scrollToTop}
+                    >
+                      See Pricing
+                    </Link>
+                  </>
+                ) : (
+                  // if not logged in
+                  <>
+                    <Link
+                      rel="noopener noreferrer"
+                      to="/book"
+                      className="px-8 py-3 text-lg font-bold rounded bg-sky-400 text-gray-900 hover:bg-sky-600 hover:text-gray-100"
+                      onClick={scrollToTop}
+                    >
+                      Book Slot
+                    </Link>
+
+                    <Link
+                      rel="noopener noreferrer"
+                      to="/pricing"
+                      className="px-8 py-3 text-lg font-bold border rounded border-gray-100"
+                      onClick={scrollToTop}
+                    >
+                      See Pricing
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
                 src="../src/assets/Parking-animate.svg"
-                alt="World Card"
+                alt="Parking"
                 className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
               />
             </div>
@@ -118,12 +158,24 @@ const Home = () => {
                       INR
                     </span>
                   </p>
-                  <a
-                    href="#"
-                    className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                   Book the slot now!
-                  </a>
+                  {!isLoggedIn() ? (
+                    <Link
+                      to="/login-before-booking"
+                      className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      onClick={scrollToTop}
+                    >
+                      Book the slot now!
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/book"
+                      className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      onClick={scrollToTop}
+                    >
+                      Book the slot now!
+                    </Link>
+                  )}
+
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company
                     reimbursement

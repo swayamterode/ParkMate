@@ -8,8 +8,11 @@ import Signup from "./components/Signup";
 import Terms from "./components/Terms";
 import Privacy from "./components/Privacy";
 import Error from "./components/Error";
+import BookSlotError from "./components/BookSlotError";
 import VehicleRegistration from "./components/VehicleRegistration";
-import "./App.css";
+import UserNotLoggedIn from "./components/UserNotLoggedIn";
+import AlreadyLoggedin from "./components/AlreadyLoggedin";
+import AlreadySignedin from "./components/AlreadySignedin";
 
 function App() {
   return (
@@ -24,7 +27,23 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/terms" element={<Terms />} />
           <Route exact path="/privacy" element={<Privacy />} />
-          <Route exact path="/vehicle_on_signup" element={<VehicleRegistration />} />
+          <Route
+            exact
+            path="/login-before-booking"
+            element={<BookSlotError />}
+          />
+          <Route
+            exact
+            path="/vehicle_on_signup"
+            element={<VehicleRegistration />}
+          />
+          <Route
+            exact
+            path="/user_not_loggedin"
+            element={<UserNotLoggedIn />}
+          />
+          <Route exact path="/login_" element={<AlreadyLoggedin />} />
+          <Route exact path="/signup_" element={<AlreadySignedin />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
