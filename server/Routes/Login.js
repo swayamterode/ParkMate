@@ -32,10 +32,15 @@ router.post("/", async (req, res) => {
   };
 
   const token = jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: 3600,
+    expiresIn: "7d",
   });
-  
-  return res.json({ success: true, message: "Login successful", token: token, userId: user.id });
+
+  return res.json({
+    success: true,
+    message: "Login successful",
+    token: token,
+    userId: user.id,
+  });
 });
 
 module.exports = router;

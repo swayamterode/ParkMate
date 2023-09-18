@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiUserCircle } from "react-icons/hi";
+import axios from "axios";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -28,8 +29,36 @@ const Navbar = () => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   };
 
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const getUser = async () => {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          authorization: token,
+        },
+      };
+      try {
+        const response = await axios.get(
+          "http://localhost:3001/user-data",
+          config
+        );
+        if (response.data.data == "token expired") {
+          window.location.href = "/login";
+          localStorage.clear();
+        }
+        setUser(response.data);
+        // console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
+
   return (
-    <nav className="border-gray-200 backdrop-blur-md bg-gray-900/40 fixed w-full">
+    <nav className="border-gray-200 backdrop-blur-md bg-gray-900/40 fixed w-full top-0 left-0 z-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
           <img
@@ -72,14 +101,20 @@ const Navbar = () => {
             id="user-dropdown"
           >
             <div className="px-4 py-3">
-              <span className="text-white font-bold">Signed in as</span>
-              <span className="block text-sm text-white">{"Loading..."}</span>
+              <p className="text-gray-300">Hello,</p>
+              {user ? (
+                <span className="block text-lg font-bold text-white">
+                  {user.username}
+                </span>
+              ) : (
+                <span className="block text-sm text-white">Loading...</span>
+              )}
             </div>
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
                 <Link
                   to="/dashboard"
-                  className="block px-4 py-2 text-sm text-white hover:text-sky-500"
+                  className="block px-4 py-2 text-md text-white hover:text-sky-500"
                   onClick={scrollToTop}
                 >
                   Dashboard
@@ -88,7 +123,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/book"
-                  className="block px-4 py-2 text-sm text-white hover:text-sky-500"
+                  className="block px-4 py-2 text-md text-white hover:text-sky-500"
                   onClick={scrollToTop}
                 >
                   Bookings
@@ -97,7 +132,7 @@ const Navbar = () => {
               <li>
                 {isLoggedIn() && (
                   <div
-                    className="block px-4 py-2 text-sm text-white hover:text-red-500 hover:cursor-pointer"
+                    className="block px-4 py-2 text-md text-red-500 hover:text-red-600 hover:cursor-pointer"
                     onClick={handleLogout}
                   >
                     Sign Out
@@ -147,7 +182,16 @@ const Navbar = () => {
                 className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700 "
                 onClick={scrollToTop}
               >
-                Book Parking
+                Vehicle Registration
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/slot-booking"
+                className="block  py-2 pl-3 pr-4  rounded   md:hover:text-blue-700 md:p-0 text-white hover:bg-gray-700 hover:text-blue-400 md:hover:bg-transparent border-gray-700 "
+                onClick={scrollToTop}
+              >
+                Book a Slot
               </Link>
             </li>
             <li>

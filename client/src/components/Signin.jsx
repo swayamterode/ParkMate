@@ -22,16 +22,14 @@ const Signin = () => {
   const [userNotFound, setUserNotFound] = useState(""); // New state to store the login error
   const [userPassword, setUserPassword] = useState(""); // New state to store the login error
 
+  // Check if the user is already logged in when the component mounts
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // User is already logged in, redirect to home or dashboard
+      navigate("/login_");
+    }
+  }, [navigate]);
 
-    // Check if the user is already logged in when the component mounts
-    useEffect(() => {
-      if (localStorage.getItem("token")) {
-        // User is already logged in, redirect to home or dashboard
-        navigate("/login_");
-      }
-    }, [navigate]);
-
-    
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +51,7 @@ const Signin = () => {
     axios
       .post("http://localhost:3001/login", formData)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.success) {
           // Store the token in local storage
           localStorage.setItem("token", res.data.token);
@@ -66,7 +64,7 @@ const Signin = () => {
           setTimeout(() => {
             setShowPopup(false);
             navigate("/");
-          },2300); // Adjust the time as needed
+          }, 2300); // Adjust the time as needed
         } else {
           // if the email is not found in the database
           if (res.data.message === "User does not exist") {
@@ -114,7 +112,7 @@ const Signin = () => {
   return (
     <>
       <Navbar />
-      {(
+      {
         <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
           <div
             className=" flex flex-col max-w-md p-6 rounded-3xl sm:p-10 w-5/6 bg-gray-900 text-gray-100 mt-20
@@ -258,7 +256,7 @@ const Signin = () => {
             </form>
           </div>
         </div>
-      )}
+      }
       <Footer />
     </>
   );

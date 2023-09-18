@@ -14,19 +14,27 @@ router.get("/", async (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET, (err, res) => {
+      // console.log(err);
+      if (err) {
+        return "token expired";
+      }
+      return res;
+    });
+    if (decoded === "token expired") {
+      return res.send({ status: "error", data: "token expired" });
+    }
     const user = await SignupModel.findOne({ _id: decoded.id });
     if (!user) {
       return res.json({ message: "User not found" });
     }
 
     return res.json({
+      status: "success",
       message: "User data retrieved",
-      userData: {
-        username: user.username,
-        email: user.email,
-        // license_number: user.license_number, // use this later if needed!
-      },
+      username: user.username,
+      email: user.email,
+      license_number: user.license_number, // use this later if needed!
     });
   } catch (err) {
     console.log(err);

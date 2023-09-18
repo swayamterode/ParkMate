@@ -4,8 +4,8 @@ import { GoAlertFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
-import UserNotLoggedIn from "./UserNotLoggedIn";
 import Footer from "./Footer";
+import { AiFillDelete } from "react-icons/ai";
 const VehicleRegistrationOnSignup = () => {
   const [formData, setFormData] = useState({
     license_number: "",
@@ -13,15 +13,24 @@ const VehicleRegistrationOnSignup = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [errors, setErrors] = useState("");
-
   const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
 
   const navigate = useNavigate();
+
+  const isLogged = () => {
+    return localStorage.getItem("userId") !== null;
+  };
+
+  useEffect(() => {
+    if (!isLogged()) {
+      navigate("/user_not_loggedin");
+    }
+  }, [navigate]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Send a POST request to your server
       const response = await axios.post(
         "http://localhost:3001/vehicle-registration",
         {
@@ -61,20 +70,55 @@ const VehicleRegistrationOnSignup = () => {
     }));
   };
 
-  const isLogged = () => {
-    return localStorage.getItem("userId") !== null;
+  // Function to fetch all registered license plate numbers WORKING 🔥
+  const [licensePlate, setLicensePlate] = useState([]);
+  const fetchLicensePlate = async () => {
+    const userId = localStorage.getItem("userId");
+
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/get-license-plate?userId=${userId}`
+      );
+
+      if (Array.isArray(response.data.license_number)) {
+        setLicensePlate(response.data.license_number);
+      } else {
+        setLicensePlate([]);
+      }
+    } catch (error) {
+      console.error("Error fetching license plate:", error);
+    }
   };
 
   useEffect(() => {
-    if (!isLogged()) {
-      navigate("/user_not_loggedin");
+    fetchLicensePlate();
+  }, [userId, licensePlate]);
+
+  // --------------------------------------------------------------- //
+
+  // Function to delete a registered license plate number WORKING 🔥
+  const deleteLicensePlate = async (licenseNumber) => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const response = await axios.delete(
+        `http://localhost:3001/delete-license-plate?userId=${userId}&licenseNumber=${licenseNumber}`
+      );
+
+      if (response.data.message === "License Plate Deleted") {
+        fetchLicensePlate();
+      } else {
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error deleting license plate:", error);
     }
-  }, [navigate]);
+  };
 
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
+      {/* Vehicle Registration✅ */}
+      <div className="pt-28 bg-gray-800 flex flex-col justify-center items-center">
         <div className="mt-10 w-5/6 flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-gray-900 text-gray-100">
           <div className="flex justify-center ">
             <img src="https://flowbite.com/docs/images/logo.svg" alt="logo" />
@@ -82,7 +126,7 @@ const VehicleRegistrationOnSignup = () => {
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Vehicle Registration</h1>
             <p className="text-sm text-gray-400">
-              You must Register atleast one vehicle to get started!
+              Register your new vehicle to your account.
             </p>
           </div>
           <form onSubmit={handleSubmit} noValidate className="space-y-12">
@@ -90,14 +134,14 @@ const VehicleRegistrationOnSignup = () => {
               {/* Fname aur lname side by side */}
               <div>
                 <label htmlFor="license_number" className="text-md ml-2">
-                  License Plate Number (Don&apos;t include spaces)
+                  License Plate Number
                 </label>
                 <input
                   type="text"
                   name="license_number"
                   id="license_number"
-                  placeholder="Enter your license plate number"
-                  className={`w-full px-3 py-2 ml-1 border rounded-md uppercase  border-gray-700 bg-gray-900 text-gray-100 `}
+                  placeholder="Enter license plate number"
+                  className={`w-full px-3 py-2 ml-1 mt-2 border rounded-md uppercase  border-gray-700 bg-gray-900 text-gray-100 `}
                   required
                   maxLength={10}
                   value={formData.license_number}
@@ -144,6 +188,39 @@ const VehicleRegistrationOnSignup = () => {
           )}
         </div>
       </div>
+
+      {/* Delete the License Number */}
+      <div className="pt-10 bg-gray-800 flex flex-col justify-center items-center">
+        <div className="mt-10 w-5/6 flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-gray-900 text-gray-100">
+          <h2 className="text-2xl font-semibold text-gray-200 flex items-center justify-center mb-7">
+            Your Registered Vehicles
+          </h2>
+          <p className="text-sm text-gray-400 flex items-center justify-center mb-5">
+            Delete your registered vehicles from your account.
+          </p>
+          {licensePlate.length > 0 ? (
+            <div>
+              {licensePlate.map((licenseNumber) => (
+                <p
+                  className="flex mb-2 items-center justify-between px-5 py-2 text-sm text-gray-400 transition-colors duration-200 border rounded-lg gap-x-2 sm:w-auto hover:bg-gray-800 bg-gray-900 border-gray-700"
+                  key={licenseNumber}
+                >
+                  <span> {licenseNumber}</span>
+                  <AiFillDelete
+                    className="hover:text-red-500 text-white cursor-pointer text-lg"
+                    onClick={() => deleteLicensePlate(licenseNumber)}
+                  ></AiFillDelete>
+                </p>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-200 flex justify-center items-center">
+              No registered vehicles found for this user.
+            </p>
+          )}
+        </div>
+      </div>
+
       <Footer />
     </>
   );

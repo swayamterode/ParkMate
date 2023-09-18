@@ -4,7 +4,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaUserCheck } from "react-icons/fa";
 import Footer from "./Footer";
 import axios from "axios";
-import AlreadySignedin from "./AlreadySignedin";
+import { PiNumberCircleOneBold } from "react-icons/pi";
+import { FaAngleDoubleRight } from "react-icons/fa";
+import { PiNumberCircleTwoBold } from "react-icons/pi";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -115,12 +117,29 @@ const Signup = () => {
               className=" flex justify-center"
             />
           </div>
-          <div className="mb-8 text-center">
+          <div className="mb-4 text-center">
             <h1 className="my-3 text-4xl font-bold">ParkMate</h1>
             <p className="text-lg text-gray-300">
               Create your account to get started.
             </p>
+
+            {/* Progress Bar */}
+            <div className="mt-8 mb-4 w-full bg-gray-200 rounded-full dark:bg-gray-700">
+              <ol className="flex items-center w-full gap-14 sm:gap-3 p-2 space-x-2 text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4">
+                <li className="flex items-center text-blue-500">
+                  <PiNumberCircleOneBold className="flex items-center justify-center w-6 h-6 mr-2 text-xs"></PiNumberCircleOneBold>
+                  Personal <span className="hidden sm:inline ml-2"> Info</span>
+                  <FaAngleDoubleRight className="w-4 h-4 ml-2 sm:ml-4"></FaAngleDoubleRight>
+                </li>
+                <li className="flex items-center cursor-not-allowed">
+                  <PiNumberCircleTwoBold className="flex items-center justify-center w-6 h-6 mr-2 text-xs"></PiNumberCircleTwoBold>
+                  Car <span className="hidden sm:inline ml-2"> Details</span>
+                  <FaAngleDoubleRight className="w-4 h-4 ml-2 sm:ml-4"></FaAngleDoubleRight>
+                </li>
+              </ol>
+            </div>
           </div>
+
           <form onSubmit={handleSubmit} className="space-y-12">
             <div className="space-y-4">
               {/* username */}

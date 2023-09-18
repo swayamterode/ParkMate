@@ -40,6 +40,7 @@ const UserNotLoggedIn = () => {
               alt="404"
             />
           </div>
+          
         </div>
       </section>
       <Footer />

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Book from "./components/Book";
+import VehicleRegistrationOnSignup from "./components/Book";
 import Pricing from "./components/Pricing";
 import About from "./components/About";
 import Signin from "./components/Signin";
@@ -13,6 +13,7 @@ import VehicleRegistration from "./components/VehicleRegistration";
 import UserNotLoggedIn from "./components/UserNotLoggedIn";
 import AlreadyLoggedin from "./components/AlreadyLoggedin";
 import AlreadySignedin from "./components/AlreadySignedin";
+import BookSlot from "./components/BookSlot";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <div>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/book" element={<Book />} />
+          <Route exact path="/book" element={<VehicleRegistrationOnSignup />} />
           <Route exact path="/pricing" element={<Pricing />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/login" element={<Signin />} />
@@ -44,6 +45,7 @@ function App() {
           />
           <Route exact path="/login_" element={<AlreadyLoggedin />} />
           <Route exact path="/signup_" element={<AlreadySignedin />} />
+          <Route exact path="/slot-booking" element={<BookSlot />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
