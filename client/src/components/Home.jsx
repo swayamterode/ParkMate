@@ -27,7 +27,7 @@ const Home = () => {
 
       {/* Hero Section */}
       <div className="sm:py-4 bg-gray-900  py-14" name="home">
-        <section className="bg-gray-900 text-gray-100">
+        <section className="bg-gray-900 text-gray-100 mx-auto max-w-[1400px] px-6 lg:px-8">
           <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
             <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
               <h1 className="text-4xl font-bold leading-tight sm:text-6xl">
@@ -94,9 +94,10 @@ const Home = () => {
             </div>
           </div>
         </section>
+        
       </div>
 
-      {/* Book Now Section */}
+{/* Test */}
 
       {/* Pricing  Here!*/}
       <div className="pt-24 bg-gray-800 py-4 sm:pt-24" name="pricing">

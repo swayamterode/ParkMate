@@ -15,38 +15,37 @@ import AlreadyLoggedin from "./components/AlreadyLoggedin";
 import AlreadySignedin from "./components/AlreadySignedin";
 import BookSlot from "./components/BookSlot";
 
+const routes = [
+  { path: "/", element: <Home /> },
+  { path: "/book", element: <VehicleRegistrationOnSignup /> },
+  { path: "/pricing", element: <Pricing /> },
+  { path: "/about", element: <About /> },
+  { path: "/login", element: <Signin /> },
+  { path: "/signup", element: <Signup /> },
+  { path: "/terms", element: <Terms /> },
+  { path: "/privacy", element: <Privacy /> },
+  { path: "/login-before-booking", element: <BookSlotError /> },
+  { path: "/vehicle_on_signup", element: <VehicleRegistration /> },
+  { path: "/user_not_loggedin", element: <UserNotLoggedIn /> },
+  { path: "/login_", element: <AlreadyLoggedin /> },
+  { path: "/signup_", element: <AlreadySignedin /> },
+  { path: "/slot-booking", element: <BookSlot /> },
+  { path: "*", element: <Error /> },
+];
+
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/book" element={<VehicleRegistrationOnSignup />} />
-          <Route exact path="/pricing" element={<Pricing />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/login" element={<Signin />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/terms" element={<Terms />} />
-          <Route exact path="/privacy" element={<Privacy />} />
-          <Route
-            exact
-            path="/login-before-booking"
-            element={<BookSlotError />}
-          />
-          <Route
-            exact
-            path="/vehicle_on_signup"
-            element={<VehicleRegistration />}
-          />
-          <Route
-            exact
-            path="/user_not_loggedin"
-            element={<UserNotLoggedIn />}
-          />
-          <Route exact path="/login_" element={<AlreadyLoggedin />} />
-          <Route exact path="/signup_" element={<AlreadySignedin />} />
-          <Route exact path="/slot-booking" element={<BookSlot />} />
-          <Route path="*" element={<Error />} />
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              exact
+              path={route.path}
+              element={route.element}
+            />
+          ))}
         </Routes>
       </div>
     </Router>
