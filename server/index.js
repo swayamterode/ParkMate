@@ -17,20 +17,24 @@ mongoDB();
 const SignupModel = require("./models/Signup"); // Import the model from the Signup.js file
 
 //  Routes
-const registerRoute = require("./Routes/Register");
-const loginRoute = require("./Routes/Login");
-const vehicleRegistrationRoute = require("./Routes/VechicleRegistration");
-const userDataRoute = require("./Routes/UserData");
-const licensePlateRoute = require("./Routes/GetLicensePlate"); // Require the new route
-const deleteLicensePlateRoute = require("./Routes/DeleteLicensePlate"); // Require the new route
+const registerRoute = require("./Routes/Register"); // Register route
+const loginRoute = require("./Routes/Login"); // Login route
+const vehicleRegistrationRoute = require("./Routes/VechicleRegistration"); // Vehicle registration route
+const userDataRoute = require("./Routes/UserData"); // User data route
+const licensePlateRoute = require("./Routes/GetLicensePlate"); // Get license plate route
+const deleteLicensePlateRoute = require("./Routes/DeleteLicensePlate"); // Delete license plate route
+const slotsBookingRoute = require("./Routes/Slots"); // Slot booking route
+const getSlotsLeftRoute = require("./Routes/GetSlotsLeft"); // Get slots left route
 
 // Middleware
-app.use("/user-data", userDataRoute);
-app.use("/register", registerRoute);
-app.use("/login", loginRoute);
-app.use("/vehicle-registration", vehicleRegistrationRoute);
-app.use("/get-license-plate", licensePlateRoute);
-app.use("/delete-license-plate", deleteLicensePlateRoute);
+app.use("/user-data", userDataRoute); // User data route
+app.use("/register", registerRoute); // Register route
+app.use("/login", loginRoute); // Login route
+app.use("/vehicle-registration", vehicleRegistrationRoute); // Vehicle registration route
+app.use("/get-license-plate", licensePlateRoute); // Get license plate route
+app.use("/delete-license-plate", deleteLicensePlateRoute); // Delete license plate route
+app.use("/slot-booking", slotsBookingRoute); // Slot booking route
+app.use("/getSlotsLeft", getSlotsLeftRoute); // Get slots left route
 
 // Protected Route
 const port = process.env.PORT || 3001;
