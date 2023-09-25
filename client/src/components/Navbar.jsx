@@ -41,7 +41,7 @@ const Navbar = () => {
       };
       try {
         const response = await axios.get(
-          "http://localhost:3001/user-data",
+          "https://parkmatebackend.onrender.com/user-data",
           config
         );
         if (response.data.data == "token expired") {

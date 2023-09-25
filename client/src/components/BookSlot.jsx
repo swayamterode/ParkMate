@@ -35,7 +35,7 @@ const BookSlotForm = () => {
       };
       try {
         const response = await axios.get(
-          "http://localhost:3001/user-data",
+          "https://parkmatebackend.onrender.com/user-data",
           config
         );
         if (response.data.data == "token expired") {
@@ -58,7 +58,7 @@ const BookSlotForm = () => {
       try {
         // Make a GET request to fetch slot information for the selected date
         const response = await axios.get(
-          `http://localhost:3001/getSlotsLeft?date=${date}`
+          `https://parkmatebackend.onrender.com/getSlotsLeft?date=${date}`
         );
         if (response.data.message === "10 slots") {
           setSlotsLeft(10); // Update slotsLeft state with available slots
@@ -108,15 +108,18 @@ const BookSlotForm = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/slot-booking", {
-        username: user.username,
-        email: user.email,
-        location,
-        date,
-        startTime,
-        endTime,
-        vehicleRegistered,
-      });
+      const response = await axios.post(
+        "https://parkmatebackend.onrender.com/slot-booking",
+        {
+          username: user.username,
+          email: user.email,
+          location,
+          date,
+          startTime,
+          endTime,
+          vehicleRegistered,
+        }
+      );
 
       // console.log(response.data.message);
       if (response.data.message === "Slot already booked.") {
@@ -149,7 +152,7 @@ const BookSlotForm = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3001/get-license-plate?userId=${userId}`
+        `https://parkmatebackend.onrender.com/get-license-plate?userId=${userId}`
       );
 
       if (Array.isArray(response.data.license_number)) {

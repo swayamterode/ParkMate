@@ -32,7 +32,7 @@ const VehicleRegistrationOnSignup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/vehicle-registration",
+        "https://parkmatebackend.onrender.com/vehicle-registration",
         {
           userId: userId, // Send the userId
           license_number: formData.license_number, // Adjust this based on your form data
@@ -77,7 +77,7 @@ const VehicleRegistrationOnSignup = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:3001/get-license-plate?userId=${userId}`
+        `https://parkmatebackend.onrender.com/get-license-plate?userId=${userId}`
       );
 
       if (Array.isArray(response.data.license_number)) {
@@ -101,7 +101,7 @@ const VehicleRegistrationOnSignup = () => {
     try {
       const userId = localStorage.getItem("userId");
       const response = await axios.delete(
-        `http://localhost:3001/delete-license-plate?userId=${userId}&licenseNumber=${licenseNumber}`
+        `https://parkmatebackend.onrender.com/delete-license-plate?userId=${userId}&licenseNumber=${licenseNumber}`
       );
 
       if (response.data.message === "License Plate Deleted") {

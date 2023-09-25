@@ -74,7 +74,7 @@ const Signup = () => {
     if (validateForm()) {
       // Form is valid, perform desired action (e.g., submit to server)
       axios
-        .post("http://localhost:3001/register", formData)
+        .post("https://parkmatebackend.onrender.com/register", formData)
         .then((response) => {
           if (response.data.message === "User already exists") {
             setUserExists(true); // Set userExists state to true if the user already exists

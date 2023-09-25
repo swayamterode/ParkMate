@@ -24,7 +24,7 @@ const VehicleRegistrationOnSignup = () => {
     try {
       // Send a POST request to your server
       const response = await axios.post(
-        "http://localhost:3001/vehicle-registration",
+        "https://parkmatebackend.onrender.com/vehicle-registration",
         {
           userId: userId, // Send the userId
           license_number: formData.license_number, // Adjust this based on your form data
