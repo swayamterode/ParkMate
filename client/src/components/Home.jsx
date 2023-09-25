@@ -87,17 +87,16 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
-                src={"/src/assets/Parking-animate.svg"}
+                src={"./assets/Parking-animate.svg"}
                 alt="Parking"
                 className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
               />
             </div>
           </div>
         </section>
-        
       </div>
 
-{/* Test */}
+      {/* Test */}
 
       {/* Pricing  Here!*/}
       <div className="pt-24 bg-gray-800 py-4 sm:pt-24" name="pricing">
