@@ -154,7 +154,7 @@ const AlreadySignedin = () => {
           <div className=" w-full mt-8 lg:w-1/2 lg:mt-0">
             <img
               className=" w-full lg:h-[32rem] h-80 md:h-96 rounded-lg object-cover "
-              src="../src/assets/starman-animate.svg"
+              src="/public/starman-animate.svg"
               alt=""
             />
           </div>

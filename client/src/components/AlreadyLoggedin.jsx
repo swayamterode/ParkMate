@@ -151,7 +151,7 @@ const AlreadyLoggedin = () => {
           <div className=" w-full mt-8 lg:w-1/2 lg:mt-0">
             <img
               className=" w-full lg:h-[32rem] h-80 md:h-96 rounded-lg object-cover "
-              src="../src/assets/directions-animate.svg"
+              src="/public/directions-animate.svg"
               alt=""
             />
           </div>

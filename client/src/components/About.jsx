@@ -6,7 +6,7 @@ const About = () => {
     <>
       <Navbar />
       <div className="min-h-screen pt-11 bg-gray-800 flex flex-col items-center justify-center">
-        <section className="py-6 dark:bg-gray-800 dark:text-gray-100">
+        <section className="py-6 bg-gray-800 text-gray-100">
           <div className="container flex flex-col items-center justify-center p-4 mx-auto sm:p-10">
             <p className="p-2 text-sm font-medium -tracking-tight text-center uppercase">
               Development team
@@ -16,11 +16,11 @@ const About = () => {
             </h1>
             <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
               {/* Pachange Data here! */}
-              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-100 text-gray-800">
                 <img
                   alt="Prathamesh"
-                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                  src="../src/assets/pachange.png"
+                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                  src={"/public/pachange.png"}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -95,11 +95,11 @@ const About = () => {
               </div>
 
               {/* Bhavsar Data Here! */}
-              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-100 text-gray-800">
                 <img
-                  alt=""
-                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                  src="../src/assets/bhavsar.png"
+                  alt="Akansha"
+                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                  src={"/public/bhavsar.png"}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -174,11 +174,11 @@ const About = () => {
                 </div>
               </div>
               {/* Laxmi Data */}
-              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-100 text-gray-800">
                 <img
                   alt="Laxmikant"
-                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                  src="../src/assets/laxmi.png"
+                  className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                  src={"/public/laxmi.png"}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -253,11 +253,11 @@ const About = () => {
                 </div>
               </div>
               {/* Swayam Terode */}
-              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
+              <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-100 text-gray-800">
                 <img
                   alt="swayam"
-                  className="self-center flex-shrink-0 w-24  h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                  src="../src/assets/swym.png"
+                  className="self-center flex-shrink-0 w-24  h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
+                  src={"/public/swym.png"}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">

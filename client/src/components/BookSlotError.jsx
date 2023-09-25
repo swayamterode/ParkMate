@@ -36,7 +36,7 @@ const UserNotLoggedIn = () => {
           <div className="mt-12 lg:w-1/2 lg:mt-0">
             <img
               className="w-full max-w-lg lg:mx-auto"
-              src="../src/assets/login-animate.svg"
+              src="/public/login-animate.svg"
               alt="404"
             />
           </div>
