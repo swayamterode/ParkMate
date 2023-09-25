@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-
 import { FcCheckmark } from "react-icons/fc";
+import herosvg from "../assets/parking-animate.svg";
 
 const includedFeatures = [
   "Private Parking access",
@@ -87,7 +87,7 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
-                src={"/public/Parking-animate.svg"}
+                src={herosvg}
                 alt="Parking"
                 className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
               />

@@ -1,6 +1,9 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import pachange from "../assets/pachange.png";
+import Akansha from "../assets/bhavsar.png";
+import Laxmikant from "../assets/laxmi.png";
+import Swayam from "../assets/swym.png";
 const About = () => {
   return (
     <>
@@ -20,7 +23,7 @@ const About = () => {
                 <img
                   alt="Prathamesh"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                  src={"/public/pachange.png"}
+                  src={pachange}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -99,7 +102,7 @@ const About = () => {
                 <img
                   alt="Akansha"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                  src={"/public/bhavsar.png"}
+                  src={Akansha}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -173,12 +176,13 @@ const About = () => {
                   </a>
                 </div>
               </div>
+
               {/* Laxmi Data */}
               <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 bg-gray-100 text-gray-800">
                 <img
                   alt="Laxmikant"
                   className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                  src={"/public/laxmi.png"}
+                  src={Laxmikant}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">
@@ -257,7 +261,7 @@ const About = () => {
                 <img
                   alt="swayam"
                   className="self-center flex-shrink-0 w-24  h-24 -mt-12 bg-center bg-cover rounded-full bg-gray-500"
-                  src={"/public/swym.png"}
+                  src={Swayam}
                   loading="lazy"
                 />
                 <div className="flex-1 my-4">

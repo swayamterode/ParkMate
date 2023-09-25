@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Error404 from "../assets/404.svg";
 const Error = () => {
   return (
     <>
@@ -51,7 +52,7 @@ const Error = () => {
           <div className="relative w-full mt-12 lg:w-1/2 lg:mt-0">
             <img
               className="w-full max-w-lg lg:mx-auto"
-              src="/public/404.svg"
+              src={Error404}
               alt="404"
             />
           </div>

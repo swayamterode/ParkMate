@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import loginAnimation from "../assets/login-animate.svg";
 const UserNotLoggedIn = () => {
   return (
     <>
@@ -36,11 +37,10 @@ const UserNotLoggedIn = () => {
           <div className="mt-12 lg:w-1/2 lg:mt-0">
             <img
               className="w-full max-w-lg lg:mx-auto"
-              src="/public/login-animate.svg"
+              src={loginAnimation}
               alt="404"
             />
           </div>
-          
         </div>
       </section>
       <Footer />

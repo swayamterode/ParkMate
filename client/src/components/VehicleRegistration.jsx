@@ -6,6 +6,7 @@ import { GoAlertFill } from "react-icons/go";
 import { BsCheckCircle } from "react-icons/bs";
 import Navbar from "./Navbar";
 import axios from "axios";
+
 const VehicleRegistrationOnSignup = () => {
   const [formData, setFormData] = useState({
     license_number: "",

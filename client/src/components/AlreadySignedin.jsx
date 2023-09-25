@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { AiOutlineLogout } from "react-icons/ai";
+import starman from "../assets/starman-animate.svg";
 
 const AlreadySignedin = () => {
   const isLoggedIn = () => {
@@ -154,7 +155,7 @@ const AlreadySignedin = () => {
           <div className=" w-full mt-8 lg:w-1/2 lg:mt-0">
             <img
               className=" w-full lg:h-[32rem] h-80 md:h-96 rounded-lg object-cover "
-              src="/public/starman-animate.svg"
+              src={starman}
               alt=""
             />
           </div>
