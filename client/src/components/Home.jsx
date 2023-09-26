@@ -66,7 +66,7 @@ const Home = () => {
                   <>
                     <Link
                       rel="noopener noreferrer"
-                      to="/book"
+                      to="/slot-booking"
                       className="px-8 py-3 text-lg font-bold rounded bg-sky-400 text-gray-900 hover:bg-sky-600 hover:text-gray-100"
                       onClick={scrollToTop}
                     >
@@ -168,14 +168,13 @@ const Home = () => {
                     </Link>
                   ) : (
                     <Link
-                      to="/book"
+                      to="/slot-booking"
                       className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       onClick={scrollToTop}
                     >
                       Book the slot now!
                     </Link>
                   )}
-
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company
                     reimbursement

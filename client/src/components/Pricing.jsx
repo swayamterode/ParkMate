@@ -12,9 +12,7 @@ const scrollToTop = () => {
   window.scrollTo(0, 0); // Scrolls to the top of the page
 };
 
-
 export default function Example() {
-
   const isLoggedIn = () => {
     return localStorage.getItem("token") !== null;
   };
@@ -82,22 +80,22 @@ export default function Example() {
                       INR
                     </span>
                   </p>
-                  {!isLoggedIn()? (
+                  {!isLoggedIn() ? (
                     <Link
-                    to="/login-before-booking"
-                    className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Book the slot now!
-                  </Link>
-                  ):(
+                      to="/login-before-booking"
+                      className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                      Book the slot now!
+                    </Link>
+                  ) : (
                     <Link
-                    to="/book"
-                    className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Book the slot now!
-                  </Link>
+                      to="/slot-booking"
+                      className="mt-10 block w-full rounded-md bg-green-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                      Book the slot now!
+                    </Link>
                   )}
-                  
+
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Invoices and receipts available for easy company
                     reimbursement

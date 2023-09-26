@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { IoLocationSharp } from "react-icons/io5";
 import { FcCalendar } from "react-icons/fc";
@@ -8,6 +8,7 @@ import { IoMdAlert } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+
 const BookSlotForm = () => {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
@@ -130,7 +131,7 @@ const BookSlotForm = () => {
         return;
       }
       if (response.data.message === "Slot Booked") {
-        setSuccessMessage("Slot Booked Successfully");
+        setSuccessMessage("Success");
         setTimeout(() => {
           setSuccessMessage(""); // Clear the message after a delay
         }, 3000);
@@ -188,6 +189,7 @@ const BookSlotForm = () => {
 
           {/* Form Starts from here! */}
           <form onSubmit={handleSubmit}>
+            {/* Select Location */}
             <div className="mb-6">
               <label className="block text-white text-sm font-semibold mb-2">
                 Location
@@ -206,6 +208,7 @@ const BookSlotForm = () => {
               </select>
             </div>
 
+            {/* Select Date */}
             <div className="mb-6">
               <label className="block text-white text-sm font-semibold mb-2">
                 Date (MM/DD/YYYY)
@@ -222,6 +225,7 @@ const BookSlotForm = () => {
               />
             </div>
 
+            {/* Start time and End Time */}
             <div className="flex flex-wrap -mx-2 mb-6">
               <div className="w-full sm:w-1/2 px-2 mb-4">
                 <label className="block text-white text-sm font-semibold mb-2">
@@ -251,16 +255,22 @@ const BookSlotForm = () => {
               </div>
             </div>
 
+            {/* Select Vehicle */}
             <div className="mb-4">
               <label className="block text-white text-sm font-semibold mb-2">
                 Select vehicle from your registered vehicles
               </label>
               <select
-                className="w-full bg-gray-200 border-none rounded py-2 px-4 text-gray-900"
+                className="w-full bg-gray-200 border-none rounded py-2 px-4 text-gray-900 relative"
                 value={vehicleRegistered}
                 onChange={(e) => {
-                  setVehicleRegistered(e.target.value);
-                  setIsVehicleSelected(""); // Set isVehicleSelected to true when user selects a vehicle
+                  const selectedVehicle = e.target.value;
+                  setVehicleRegistered(selectedVehicle);
+                  if (selectedVehicle === "register_vehicle") {
+                    navigate("/book");
+                  } else {
+                    setIsVehicleSelected(""); // Set isVehicleSelected to true when user selects a vehicle
+                  }
                 }}
               >
                 <option value="">Select Vehicle</option>
@@ -269,36 +279,33 @@ const BookSlotForm = () => {
                     {plate}
                   </option>
                 ))}
+                <option disabled>OR</option>
+                <option value="register_vehicle">
+                  Register a New Vehicle
+                </option>
               </select>
             </div>
 
-            <div className="mb-6 text-center">
-              <label className="block text-white text-lg font-semibold mb-4">
-                OR
-              </label>
-              <Link
-                to="/book"
-                className="bg-blue-500 shadow-lg text-white px-4 py-2 rounded hover:bg-blue-600 hover:ring-2 hover:ring-sky-300 hover:shadow-2xl"
-              >
-                Register New Vehicle
-              </Link>
-            </div>
-
-            <div className="mb-6 text-center">
+            {/* Slots left animation */}
+            <div className="mb-6 text-center animate-bounce">
               {date && (
-                <label className="block text-white text-lg font-semibold mb-2">
+                <label className="block text-lg font-semibold mt-6">
                   For {date} only{" "}
-                  <span className="text-red-500"> {slotsLeft} </span>Slots left!
+                  <span className="bg-gradient-to-r from-red-500 to-yellow-500 text-transparent bg-clip-text">
+                    {slotsLeft}
+                  </span>{" "}
+                  Slots left!
                 </label>
               )}
             </div>
 
-            <div className="mt-6 flex justify-center">
+            {/* Proceed to Pay Button */}
+            <div className="mt-4 flex justify-center">
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-6 py-3 rounded-full text-xl hover:bg-blue-600 hover:ring-4 hover:ring-sky-300 hover:shadow-2xl shadow-xl"
+                className="bg-blue-500 text-white px-6 py-3 rounded-full text-xl transition-all duration-300 ease-in-out hover:bg-blue-600 hover:ring-4 hover:ring-sky-300 hover:shadow-2xl shadow-xl"
               >
-                Book Slot
+                Proceed to Pay
               </button>
             </div>
           </form>
@@ -382,6 +389,7 @@ const BookSlotForm = () => {
           </div>
         </div>
       )}
+
       <Footer />
     </>
   );
