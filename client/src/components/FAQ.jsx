@@ -5,7 +5,7 @@ const Faq = () => {
     <>
       <section className="bg-gray-900">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-white flex justify-center items-center">
+          <h2 className="mb-8 text-2xl lg:text-5xl tracking-tight font-extrabold text-white flex justify-center items-center">
             <FcFaq className="mr-4" />
             Frequently asked questions
           </h2>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import starman from "../assets/starman-animate.svg";
 import axios from "axios";
@@ -112,18 +111,15 @@ const BookSlotForm = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://parkmatebackend.onrender.com/slot-booking",
-        {
-          username: user.username,
-          email: user.email,
-          location,
-          date,
-          startTime,
-          endTime,
-          vehicleRegistered,
-        }
-      );
+      const response = await axios.post("https://parkmatebackend.onrender.com/slot-booking", {
+        username: user.username,
+        email: user.email,
+        location,
+        date,
+        startTime,
+        endTime,
+        vehicleRegistered,
+      });
 
       // console.log(response.data.message);
       if (response.data.message === "Slot already booked.") {
@@ -137,7 +133,8 @@ const BookSlotForm = () => {
         setSuccessMessage("Success");
         setTimeout(() => {
           setSuccessMessage(""); // Clear the message after a delay
-          window.location.href = "https://buy.stripe.com/test_8wMbJH35agnKfAIfYY"; // Redirect to the Stripe payment page
+          window.location.href =
+            "https://buy.stripe.com/test_8wMbJH35agnKfAIfYY"; // Redirect to the Stripe payment page
         }, 3000);
       }
     } catch (error) {
@@ -160,14 +157,6 @@ const BookSlotForm = () => {
       return;
     }
 
-    // Check if mongoose is available (it's not available on the client-side)
-    if (
-      typeof mongoose === "undefined" ||
-      !mongoose.Types.ObjectId.isValid(userId)
-    ) {
-      console.error("Invalid user ID format. Please provide a valid user ID.");
-      return;
-    }
     try {
       const response = await axios.get(
         `https://parkmatebackend.onrender.com/get-license-plate?userId=${userId}`
@@ -313,7 +302,7 @@ const BookSlotForm = () => {
                   )}
                 </div>
                 <div className="mt-5 flex justify-center items-center gap-4">
-                <FiAlertCircle className="text-red-600 text-2xl" />
+                  <FiAlertCircle className="text-red-600 text-2xl" />
                   <p className="text-red-600">
                     Your Slot will only be Booked once you Pay!
                   </p>

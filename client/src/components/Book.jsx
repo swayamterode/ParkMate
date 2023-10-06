@@ -34,7 +34,7 @@ const VehicleRegistrationOnSignup = () => {
         "https://parkmatebackend.onrender.com/vehicle-registration",
         {
           userId: userId, // Send the userId
-          license_number: formData.license_number, // Adjust this based on your form data
+          license_number: formData.license_number,
         }
       );
 
@@ -189,7 +189,7 @@ const VehicleRegistrationOnSignup = () => {
       </div>
 
       {/* Delete the License Number */}
-      <div className="pt-10 bg-gray-800 flex flex-col justify-center items-center">
+      <div className="pt-10 bg-gray-800 flex flex-col justify-center items-center pb-32">
         <div className="mt-10 w-5/6 flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-gray-900 text-gray-100">
           <h2 className="text-2xl font-semibold text-gray-200 flex items-center justify-center mb-7">
             Your Registered Vehicles

@@ -8,24 +8,24 @@ const Feature = () => {
         <div className="container max-w-8xl px-6 py-10 mx-auto">
           <div className="lg:flex lg:items-center">
             <div className="w-full space-y-12 lg:space-y-16 lg:w-1/2 lg:ml-10">
-            <div className="text-center md:text-left">
-  <h1 className="text-2xl font-semibold capitalize lg:text-4xl text-white">
-    What does <br />
-    <span className="text-transparent bg-clip-text bg-gradient-to-r to-yellow-600 from-red-400 md:text-center">
-      ParkMate{" "}
-    </span>{" "}
-    Offers?
-  </h1>
+              <div className="text-center md:text-left">
+                <h1 className="text-3xl capitalize lg:text-5xl text-white font-bold">
+                  What does <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r to-yellow-600 from-red-400 md:text-center">
+                    ParkMate{" "}
+                  </span>{" "}
+                  Offers?
+                </h1>
 
-  <div className="mt-2">
-    <span className="inline-block w-64 h-1 bg-blue-500 rounded-full"></span>
-    <span className="inline-block w-3 h-1 ml-1 bg-blue-500 rounded-full"></span>
-    <span className="inline-block w-1 h-1 ml-1 bg-blue-500 rounded-full"></span>
-  </div>
-</div>
+                <div className="mt-2">
+                  <span className="inline-block w-64 h-1 bg-blue-500 rounded-full"></span>
+                  <span className="inline-block w-3 h-1 ml-1 bg-blue-500 rounded-full"></span>
+                  <span className="inline-block w-1 h-1 ml-1 bg-blue-500 rounded-full"></span>
+                </div>
+              </div>
 
               {/* Secure Parking */}
-              <div className="md:flex md:items-start md:-mx-4">
+              <div className="md:flex md:items-start md:-mx-4 p-6 border rounded-lg shadow bg-gray-800 border-gray-700 lg:bg-gray-800/0 lg:border-gray-700/0">
                 <span className="inline-block p-2 rounded-xl md:mx-4 text-white bg-blue-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ const Feature = () => {
                 </div>
               </div>
               {/* Advance Slot Booking */}
-              <div className="md:flex md:items-start md:-mx-4">
+              <div className="md:flex md:items-start md:-mx-4  p-6 border  rounded-lg shadow bg-gray-800 border-gray-700 lg:bg-gray-800/0 lg:border-gray-700/0">
                 <span className="inline-block p-2 rounded-xl md:mx-4 text-white bg-blue-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@ const Feature = () => {
                 </div>
               </div>
 
-              <div className="md:flex md:items-start md:-mx-4">
+              <div className="md:flex md:items-start md:-mx-4  p-6 border  rounded-lg shadow bg-gray-800 border-gray-700 lg:bg-gray-800/0 lg:border-gray-700/0">
                 <span className="inline-block p-2 rounded-xl md:mx-4 text-white bg-blue-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,19 +112,19 @@ const Feature = () => {
                   </svg>
                 </span>
 
-                <div className="mt-4 md:mx-4 md:mt-0">
+                <div className="mt-4 md:mx-4 md:mt-0 ">
                   <h1 className="text-xl font-semibold capitalize text-white">
-                    elegant Dark Mode
+                    Own Your Parking for a Day
                   </h1>
 
                   <p className="mt-3 text-gray-500 dark:text-gray-300">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Provident ab nulla quod dignissimos vel non corrupti
-                    doloribus voluptatum eveniet
+                    You can own the parking lot for a day. You can book the
+                    parking lot for a day and can park your vehicle for 24
+                    hours.
                   </p>
                 </div>
               </div>
-              <div className="flex md:justify-center lg:justify-start">
+              <div className="flex md:justify-center lg:justify-start justify-center items-center">
                 <Link
                   to="/slot-booking"
                   className="text-blue-500 cursor-pointer font-bold text-lg md:text-xl text-center hover:text-yellow-400 sm:m-0"

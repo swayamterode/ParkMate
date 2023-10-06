@@ -28,10 +28,10 @@ const Home = () => {
       <Navbar />
       <Hero />
       {/* Pricing  Here!*/}
-      <div className="pt-24 bg-gray-800 py-32 sm:pt-24" name="pricing">
+      <div className=" bg-gray-800 py-32 sm:pt-24" name="pricing">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-4xl text-center font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="-mt-20 lg:-mt-0 text-4xl text-center font-bold tracking-tight text-white sm:text-5xl">
               ParkMate Pricing
             </h2>
             <p className="mt-6 text-2xl font-light text-center leading-8 text-white">
@@ -54,7 +54,7 @@ const Home = () => {
               </p>
               <div className="mt-10 flex items-center gap-x-4">
                 <h4 className="flex-none text-sm font-semibold leading-6 text-green-400">
-                  What’s included
+                  What&apos;s included
                 </h4>
                 <div className="h-px flex-auto bg-gray-100" />
               </div>
@@ -118,7 +118,7 @@ const Home = () => {
       <Feature />
       {/* Timeline Here!*/}
       <Timeline />
-      <FAQ/>
+      <FAQ />
       <Footer />
     </>
   );

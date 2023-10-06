@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
 import logo from "../assets/mainLogo.svg";
-// import AlreadyLoggedin from "./AlreadyLoggedin";
 
 const Signin = () => {
   const [formData, setFormData] = useState({
@@ -107,10 +106,6 @@ const Signin = () => {
     }));
   };
 
-  // const isLoggedIn = () => {
-  //   return localStorage.getItem("token") !== null;
-  // };
-
   return (
     <>
       <Navbar />
@@ -130,8 +125,8 @@ const Signin = () => {
 
             <div className="mb-8 text-center">
               <h1 className="my-3 text-4xl font-bold">ParkMate</h1>
-              <p className="text-lg text-gray-300">
-                Sign in to access your account 🔐
+              <p className="text-lg text-gray-300 flex justify-center gap-2">
+                Sign in to access your account.
               </p>
             </div>
 
@@ -161,13 +156,13 @@ const Signin = () => {
                     <label htmlFor="password" className="text-sm">
                       Password
                     </label>
-                    <a
+                    {/* <a
                       rel="noopener noreferrer"
                       href="#"
                       className="text-xs hover:underline text-gray-400 hover:text-sky-300"
                     >
                       Forgot password?
-                    </a>
+                    </a> */}
                   </div>
                   <input
                     type="password"

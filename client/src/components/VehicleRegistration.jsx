@@ -86,12 +86,12 @@ const VehicleRegistrationOnSignup = () => {
       <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
         <div className="mt-10 w-5/6 flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-gray-900 text-gray-100">
           <div className="flex justify-center">
-          <img
-            src={logo}
-            className="h-9 lg:h-12"
-            alt="ParkMate Logo"
-            onClick={scrollToTop}
-          />
+            <img
+              src={logo}
+              className="h-9 lg:h-12"
+              alt="ParkMate Logo"
+              onClick={scrollToTop}
+            />
           </div>
           <div className="mb-8 text-center flex flex-col gap-4 ">
             <h1 className="my-3 text-4xl font-bold">Vehicle Registration</h1>

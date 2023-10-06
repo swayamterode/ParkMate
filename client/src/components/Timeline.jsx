@@ -10,7 +10,7 @@ const Steps = () => {
           {/* Write Steps here */}
           <div className="wf-ull lg:w-1/2">
             {/* heading */}
-            <h1 className="mt-3 text-3xl font-semibold text-white md:text-6xl md:text-left text-center">
+            <h1 className="mt-3 text-3xl font-bold text-white md:text-6xl md:text-left text-center">
               Book Your Parking Spot in few steps
             </h1>
 

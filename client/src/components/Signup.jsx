@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUserCheck } from "react-icons/fa";
@@ -109,8 +109,8 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
-        <div className=" mt-20 w-5/6 flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-900 text-gray-100">
+      <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center  pb-20 pt-10">
+        <div className=" mt-20 w-5/6 flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-900 text-gray-100 ">
           <div className="flex justify-center items-center">
             <img
               src={logo}
