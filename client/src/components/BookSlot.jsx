@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import starman from "../assets/starman-animate.svg";
-import mongoose from "mongoose";
 import axios from "axios";
 import { IoLocationSharp } from "react-icons/io5";
 import { FcCalendar } from "react-icons/fc";
