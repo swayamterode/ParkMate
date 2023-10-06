@@ -3,7 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
+import logo from "../assets/mainLogo.svg";
 // import AlreadyLoggedin from "./AlreadyLoggedin";
+
 const Signin = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -120,9 +122,9 @@ const Signin = () => {
           >
             <div className="flex justify-center ">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={logo}
                 alt="logo"
-                className="w-10"
+                className=" flex justify-center h-9 lg:h-14"
               />
             </div>
 

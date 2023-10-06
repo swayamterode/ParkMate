@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FcCheckmark } from "react-icons/fc";
-
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 const includedFeatures = [
   "Private Parking access",
@@ -8,9 +8,6 @@ const includedFeatures = [
   "Park your vehicle for a day",
   "Easy payment methods",
 ];
-const scrollToTop = () => {
-  window.scrollTo(0, 0); // Scrolls to the top of the page
-};
 
 export default function Example() {
   const isLoggedIn = () => {
@@ -21,8 +18,11 @@ export default function Example() {
     <>
       <Navbar />
       {/* Pricing Section */}
-      <div className="pt-24 bg-gray-800 py-4 sm:pt-24" name="pricing">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        className="pt-24 min-h-screen bg-gray-800 py-4 sm:pt-24"
+        name="pricing"
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:mt-28">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="text-4xl text-center font-bold tracking-tight text-white sm:text-4xl">
               ParkMate Pricing
@@ -36,7 +36,7 @@ export default function Example() {
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-2 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-            <div className="p-8 sm:p-10 lg:flex-auto">
+            <div className="p-8 sm:p-10  lg:flex-auto">
               <h3 className="text-2xl font-bold tracking-tight text-white">
                 ParkMate Pricing
               </h3>
@@ -107,47 +107,7 @@ export default function Example() {
         </div>
       </div>
       {/* End Pricing Section */}
-      {/* Footer Starts! */}
-      <footer className="px-4 py-10 dark:bg-gray-800 dark:text-gray-400">
-        <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
-          <div className="flex flex-row pr-3 space-x-4 sm:space-x-8">
-            <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Logo"
-                onClick={scrollToTop}
-              />
-            </div>
-            <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
-              <li>
-                <Link to="/terms" onClick={scrollToTop}>
-                  Terms of Use
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" onClick={scrollToTop}>
-                  Privacy
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <ul className="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
-            <li>
-              <Link to="/" onClick={scrollToTop}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/pricing">Pricing Price</Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={scrollToTop}>
-                Developers
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

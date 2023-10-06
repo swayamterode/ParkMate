@@ -7,6 +7,7 @@ import axios from "axios";
 import { PiNumberCircleOneBold } from "react-icons/pi";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { PiNumberCircleTwoBold } from "react-icons/pi";
+import logo from "../assets/mainLogo.svg";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -112,9 +113,10 @@ const Signup = () => {
         <div className=" mt-20 w-5/6 flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-900 text-gray-100">
           <div className="flex justify-center items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
+              src={logo}
               alt="logo"
-              className=" flex justify-center"
+              className=" flex justify-center h-9 lg:h-14"
+
             />
           </div>
           <div className="mb-4 text-center">

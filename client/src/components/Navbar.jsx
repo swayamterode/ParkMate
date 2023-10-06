@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { HiUserCircle } from "react-icons/hi";
 import axios from "axios";
+import logo from "../assets/mainLogo.svg";
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -59,16 +61,16 @@ const Navbar = () => {
 
   return (
     <nav className="border-gray-200 backdrop-blur-md bg-gray-900/40 fixed w-full top-0 left-0 z-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-9 mr-3"
+            src={logo}
+            className="h-9 lg:h-12"
             alt="ParkMate Logo"
             onClick={scrollToTop}
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            ParkMate
+            arkMate
           </span>
         </Link>
         <div className="flex items-center md:order-2 relative">
@@ -163,7 +165,7 @@ const Navbar = () => {
           } w-full md:flex md:w-auto md:order-1`}
           id="navbar-user"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white/0 bg-gray-800 md:dark:bg-gray-900/0 border-gray-700">
+          <ul className="xl:mr-24 flex flex-col font-medium p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white/0 bg-gray-800 md:dark:bg-gray-900/0 border-gray-700">
             <li>
               <Link
                 offset={50}

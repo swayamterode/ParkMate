@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import Footer from "./Footer";
 import { AiFillDelete } from "react-icons/ai";
+import mongoose from "mongoose";
 const VehicleRegistrationOnSignup = () => {
   const [formData, setFormData] = useState({
     license_number: "",
@@ -29,7 +30,19 @@ const VehicleRegistrationOnSignup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!userId) {
+      console.error("User ID is null. Please provide a valid user ID.");
+      return;
+    }
 
+    // Check if mongoose is available (it's not available on the client-side)
+    if (
+      typeof mongoose === "undefined" ||
+      !mongoose.Types.ObjectId.isValid(userId)
+    ) {
+      console.error("Invalid user ID format. Please provide a valid user ID.");
+      return;
+    }
     try {
       const response = await axios.post(
         "https://parkmatebackend.onrender.com/vehicle-registration",

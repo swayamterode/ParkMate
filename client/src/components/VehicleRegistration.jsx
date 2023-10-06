@@ -6,6 +6,7 @@ import { GoAlertFill } from "react-icons/go";
 import { BsCheckCircle } from "react-icons/bs";
 import Navbar from "./Navbar";
 import axios from "axios";
+import logo from "../assets/mainLogo.svg";
 
 const VehicleRegistrationOnSignup = () => {
   const [formData, setFormData] = useState({
@@ -74,7 +75,10 @@ const VehicleRegistrationOnSignup = () => {
     }));
   };
 
-  // make a popup for why we need license number with the cross on the top right corner to close it.
+  // Scroll to top
+  const scrollToTop = () => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  };
 
   return (
     <>
@@ -82,11 +86,12 @@ const VehicleRegistrationOnSignup = () => {
       <div className="min-h-screen bg-gray-800 flex flex-col justify-center items-center">
         <div className="mt-10 w-5/6 flex flex-col max-w-md p-6 rounded-xl sm:p-10 bg-gray-900 text-gray-100">
           <div className="flex justify-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="logo"
-              className="w-10"
-            />
+          <img
+            src={logo}
+            className="h-9 lg:h-12"
+            alt="ParkMate Logo"
+            onClick={scrollToTop}
+          />
           </div>
           <div className="mb-8 text-center flex flex-col gap-4 ">
             <h1 className="my-3 text-4xl font-bold">Vehicle Registration</h1>
