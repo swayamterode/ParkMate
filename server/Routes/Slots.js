@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Slot = require("../models/SlotBooking"); //schema
 
-const formatDate = (date) => new Date(date).toISOString();
+const formatDate = (date) => new Date(date).toISOString(); // Updated formatting function
 
 router.post("/", async (req, res) => {
   const {
@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   } = req.body;
 
   try {
-    const formattedDate = formatDate(date);
+    const formattedDate = formatDate(date); // Use ISO string format
 
     // Check if a slot for the specified date exists, if not, create one
     let slot = await Slot.findOne({ date: formattedDate });
@@ -38,6 +38,7 @@ router.post("/", async (req, res) => {
         booking.username === username &&
         booking.email === email &&
         booking.location === location &&
+        booking.date === formattedDate &&
         booking.startTime === startTime &&
         booking.endTime === endTime &&
         booking.vehicleRegistered === vehicleRegistered
@@ -55,6 +56,7 @@ router.post("/", async (req, res) => {
       username,
       email,
       location,
+      date: new Date(formattedDate), // Convert to Date object
       startTime,
       endTime,
       vehicleRegistered,
@@ -65,7 +67,7 @@ router.post("/", async (req, res) => {
     await slot.save();
 
     return res.send({ message: "Slot Booked", newBooking });
-    
+
   } catch (error) {
     return res
       .status(500)

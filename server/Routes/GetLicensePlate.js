@@ -8,6 +8,13 @@ router.get("/", async (req, res) => {
   // get the userId from the request query
   const userId = req.query.userId;
 
+  // Check if userId is a valid ObjectId
+  if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+    return res.json({
+      message: "Invalid user ID. Please provide a valid user ID.",
+    });
+  }
+
   try {
     // Find the user by id
     const user = await SignupModel.findOne({ _id: userId });
