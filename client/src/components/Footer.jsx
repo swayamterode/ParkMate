@@ -30,17 +30,7 @@ const Footer = () => {
               {" "}
               Home{" "}
             </Link>
-
-            <Link
-              to="/pricing"
-              onClick={scrollToTop}
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-              aria-label="Reddit"
-            >
-              {" "}
-              Pricing{" "}
-            </Link>
-
+            
             <Link
               to="/about"
               onClick={scrollToTop}
