@@ -8,52 +8,6 @@ const scrollToTop = () => {
 
 const Footer = () => {
   return (
-    // <footer className="bg-gray-900">
-    //   <div className="container flex flex-col items-center justify-between px-6 py-8 mx-auto lg:flex-row">
-    //     <a href="#">
-    //       <img
-    //         className="w-auto h-7"
-    //         src="https://merakiui.com/images/full-logo.svg"
-    //         alt=""
-    //       />
-    //     </a>
-
-    //     <div className="flex flex-wrap items-center justify-center gap-4 mt-6 lg:gap-6 lg:mt-0">
-    //       <Link to="/" onClick={scrollToTop}>
-    //         <p className="text-sm transition-colors duration-300 text-gray-200 hover:text-blue-400">
-    //           Home
-    //         </p>
-    //       </Link>
-    //       <Link to="/terms" onClick={scrollToTop}>
-    //         <p className="text-sm transition-colors duration-300 text-gray-200 hover:text-blue-400">
-    //           Terms of Use
-    //         </p>
-    //       </Link>
-
-    //       <Link to="/privacy" onClick={scrollToTop}>
-    //         <p className="text-sm transition-colors duration-300 text-gray-200 hover:text-blue-400">
-    //           Privacy
-    //         </p>
-    //       </Link>
-    //       <Link to="/pricing">
-    //         <p className="text-sm transition-colors duration-300 text-gray-200 hover:text-blue-400">
-    //           Pricing Price
-    //         </p>
-    //       </Link>
-    // <Link to="/about" onClick={scrollToTop}>
-    //   <p className="text-sm transition-colors duration-300 text-gray-200 hover:text-blue-400">
-    //     Developers
-    //   </p>
-    // </Link>
-    //     </div>
-
-    //     <p className="mt-6 text-sm lg:mt-0 text-gray-400 ">
-    //       © Copyright 2023 ParkMate.{" "}
-    //       <AiFillGithub className="text-2xl inline-block" />
-    //     </p>
-    //   </div>
-    // </footer>
-
     <footer className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
