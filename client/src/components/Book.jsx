@@ -1,117 +1,19 @@
-import { useEffect, useState } from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { GoAlertFill } from "react-icons/go";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import axios from "axios";
 import Footer from "./Footer";
 import { AiFillDelete } from "react-icons/ai";
+import useBook from "../Hooks/useBook";
 const VehicleRegistrationOnSignup = () => {
-  const [formData, setFormData] = useState({
-    license_number: "",
-  });
-
-  const [showPopup, setShowPopup] = useState(false);
-  const [errors, setErrors] = useState("");
-  const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
-
-  const navigate = useNavigate();
-
-  const isLogged = () => {
-    return localStorage.getItem("userId") !== null;
-  };
-
-  useEffect(() => {
-    if (!isLogged()) {
-      navigate("/user_not_loggedin");
-    }
-  }, [navigate]);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://parkmatebackend.onrender.com/vehicle-registration",
-        {
-          userId: userId, // Send the userId
-          license_number: formData.license_number,
-        }
-      );
-
-      // Check the response and handle accordingly
-      if (response.data.message === "Vehicle Registered") {
-        // Show the success popup
-        setShowPopup(true);
-        setTimeout(() => {
-          // Hide the success popup after 1 second
-          setShowPopup(false);
-        }, 1000); // Hide the success popup after 1 second
-      } else {
-        setErrors(response.data.message);
-        setTimeout(() => {
-          setErrors("");
-        }, 3000);
-        console.error(response.data.message);
-      }
-    } catch (error) {
-      setErrors("An error occurred during vehicle registration");
-      setTimeout(() => {
-        setErrors("");
-      }, 3000);
-    }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Function to fetch all registered license plate numbers WORKING 🔥
-  const [licensePlate, setLicensePlate] = useState([]);
-  const fetchLicensePlate = async () => {
-    const userId = localStorage.getItem("userId");
-
-    try {
-      const response = await axios.get(
-        `https://parkmatebackend.onrender.com/get-license-plate?userId=${userId}`
-      );
-
-      if (Array.isArray(response.data.license_number)) {
-        setLicensePlate(response.data.license_number);
-      } else {
-        setLicensePlate([]);
-      }
-    } catch (error) {
-      console.error("Error fetching license plate:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchLicensePlate();
-  }, [userId, licensePlate]);
-
-  // --------------------------------------------------------------- //
-
-  // Function to delete a registered license plate number WORKING 🔥
-  const deleteLicensePlate = async (licenseNumber) => {
-    try {
-      const userId = localStorage.getItem("userId");
-      const response = await axios.delete(
-        `https://parkmatebackend.onrender.com/delete-license-plate?userId=${userId}&licenseNumber=${licenseNumber}`
-      );
-
-      if (response.data.message === "License Plate Deleted") {
-        fetchLicensePlate();
-      } else {
-        console.error(response.data.message);
-      }
-    } catch (error) {
-      console.error("Error deleting license plate:", error);
-    }
-  };
+  const {
+    formData,
+    showPopup,
+    errors,
+    licensePlate,
+    handleChange,
+    handleSubmit,
+    deleteLicensePlate,
+  } = useBook();
 
   return (
     <>

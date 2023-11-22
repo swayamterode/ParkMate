@@ -4,25 +4,54 @@ import pachange from "../assets/pachange.png";
 import Akansha from "../assets/bhavsar.png";
 import Laxmikant from "../assets/laxmi.png";
 import Swayam from "../assets/swym.png";
+import {
+  ABOUT_INTRO,
+  ABOUT_TITLE1,
+  ABOUT_TITLE2,
+  AKANSHA_EMAIL,
+  AKANSHA_GITHUB,
+  AKANSHA_INTRO,
+  AKANSHA_LINKEDIN,
+  AKANSHA_NAME,
+  AKANSHA_ROLE,
+  AKANSHA_TWITTER,
+  LAXMIKANT_EMAIL,
+  LAXMIKANT_GITHUB,
+  LAXMIKANT_INTRO,
+  LAXMIKANT_LINKEDIN,
+  LAXMIKANT_NAME,
+  LAXMIKANT_ROLE,
+  LAXMIKANT_TWITTER,
+  PRATHAMESH_EMAIL,
+  PRATHAMESH_GITHUB,
+  PRATHAMESH_INTRO,
+  PRATHAMESH_LINKEDIN,
+  PRATHAMESH_NAME,
+  PRATHAMESH_ROLE,
+  PRATHAMESH_TWITTER,
+  SWAYAM_EMAIL,
+  SWAYAM_GITHUB,
+  SWAYAM_INTRO,
+  SWAYAM_LINKEDIN,
+  SWAYAM_NAME,
+  SWAYAM_ROLE,
+  SWAYAM_TWITTER,
+} from "../constants/AboutConstants";
 const About = () => {
   return (
     <>
       <Navbar />
-
       <section className="min-h-screen mt-20 bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-center capitalize lg:text-3xl text-white">
-            Meet Our <span className="text-blue-500">ParkMate Team</span>
+            {ABOUT_TITLE1} <span className="text-blue-500">{ABOUT_TITLE2}</span>
           </h1>
           {/* Intro */}
           <p className="max-w-2xl mx-auto my-6 text-center text-gray-300 text-lg">
-            A fusion of FullStack and IoT Developers, alongside creative Figma
-            Designers. We&apos;re reshaping parking solutions for a smarter,
-            user-friendly urban experience. Stay tuned for innovation in motion.
+            {ABOUT_INTRO}
           </p>
 
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
-            
             {/* Swayam Terode */}
             <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl group hover:bg-blue-600 border-gray-700 hover:border-transparent">
               <div className="flex flex-col sm:-mx-4 sm:flex-row">
@@ -30,31 +59,28 @@ const About = () => {
                 <img
                   className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
                   src={Swayam}
-                  alt=""
+                  alt="Swayam Terode"
                 />
                 {/* Swayam's Title */}
                 <div className="mt-4 sm:mx-4 sm:mt-0">
                   <h1 className="text-xl font-semibold  capitalize md:text-2xl text-white group-hover:text-white">
-                    Swayam Terode
+                    {SWAYAM_NAME}
                   </h1>
-
                   <p className="mt-2 capitalize text-gray-300 group-hover:text-gray-300">
-                    Full Stack Developer
+                    {SWAYAM_ROLE}
                   </p>
                 </div>
               </div>
               {/* Swayam Intro */}
               <p className="mt-4 capitalize text-gray-300 group-hover:text-gray-300">
-                A proficient Full Stack Developer with a focus on innovative
-                digital solutions. I strive for seamless user experiences and
-                robust functionality. Made Parkmate with love and passion.
+                {SWAYAM_INTRO}
               </p>
               {/* swayam socials */}
               <div className="flex mt-4 gap-6">
                 {/* Gmail Link */}
                 <a
                   rel="noopener noreferrer"
-                  href="mailto:swayamterodex@gmail.com"
+                  href={`mailto:${SWAYAM_EMAIL}`}
                   target="_blank"
                   title="Email"
                   className="text-white hover:text-black"
@@ -72,7 +98,7 @@ const About = () => {
                 {/* X logo */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://twitter.com/swayamterode"
+                  href={SWAYAM_TWITTER}
                   target="_blank"
                   title="X"
                   className="text-white hover:text-black"
@@ -89,7 +115,7 @@ const About = () => {
                 {/* LinkedIn */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/swayamterode/"
+                  href={SWAYAM_LINKEDIN}
                   target="_blank"
                   title="LinkedIn"
                   className="text-white hover:text-black"
@@ -106,7 +132,7 @@ const About = () => {
                 {/* Github */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://github.com/swayamterode"
+                  href={SWAYAM_GITHUB}
                   target="_blank"
                   title="GitHub"
                   className="text-white hover:text-black"
@@ -133,26 +159,24 @@ const About = () => {
 
                 <div className="mt-4 sm:mx-4 sm:mt-0">
                   <h1 className="text-xl font-semibold capitalize md:text-2xl text-white group-hover:text-white">
-                    Laxmikant Yelgandrawar
+                    {LAXMIKANT_NAME}
                   </h1>
 
                   <p className="mt-2 capitalize text-gray-300 group-hover:text-gray-300">
-                    IoT Developer
+                    {LAXMIKANT_ROLE}
                   </p>
                 </div>
               </div>
 
               <p className="mt-4 capitalize text-gray-300 group-hover:text-gray-300">
-                IoT Developer of the ParkMate, driving innovation and impactful
-                solutions. With a strong track record, he excels in pioneering
-                advancements in the IoT field.
+                {LAXMIKANT_INTRO}
               </p>
 
               <div className="flex mt-4 gap-6">
                 {/* Gmail Link */}
                 <a
                   rel="noopener noreferrer"
-                  href="mailto:laxmikant.yelgandrawar7114@gmail.com"
+                  href={`mailto:${LAXMIKANT_EMAIL}`}
                   target="_blank"
                   title="Email"
                   className="text-white hover:text-black"
@@ -170,7 +194,7 @@ const About = () => {
                 {/* X logo */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://twitter.com/_Lucky_7114"
+                  href={LAXMIKANT_TWITTER}
                   target="_blank"
                   title="X"
                   className="text-white hover:text-black"
@@ -187,7 +211,7 @@ const About = () => {
                 {/* LinkedIn */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/laxmikant-yelgandrawar-42272623b/"
+                  href={LAXMIKANT_LINKEDIN}
                   target="_blank"
                   title="LinkedIn"
                   className="text-white hover:text-black"
@@ -204,7 +228,7 @@ const About = () => {
                 {/* Github */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://github.com/laxmikant7114"
+                  href={LAXMIKANT_GITHUB}
                   target="_blank"
                   title="GitHub"
                   className="text-white hover:text-black"
@@ -232,26 +256,24 @@ const About = () => {
 
                 <div className="mt-4 sm:mx-4 sm:mt-0">
                   <h1 className="text-xl font-semibold capitalize md:text-2xl text-white group-hover:text-white">
-                    Prathamesh Pachange
+                    {PRATHAMESH_NAME}
                   </h1>
 
                   <p className="mt-2 text-white capitalize group-hover:text-white">
-                    Figma Designer
+                    {PRATHAMESH_ROLE}
                   </p>
                 </div>
               </div>
 
               <p className="mt-4 text-white capitalize group-hover:text-white">
-                Skilled Figma Designer, creating captivating, sleek interfaces
-                with a blend of design aesthetics and strong technical expertise
-                for exceptional digital experiences.
+                {PRATHAMESH_INTRO}
               </p>
 
               <div className="flex mt-4 gap-6">
                 {/* Gmail Link */}
                 <a
                   rel="noopener noreferrer"
-                  href="pachangeprathmesh@gmail.com  "
+                  href={`mailto:${PRATHAMESH_EMAIL}`}
                   target="_blank"
                   title="Email"
                   className="text-white hover:text-black"
@@ -269,7 +291,7 @@ const About = () => {
                 {/* X logo */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://twitter.com/imPpachange?t=MMfslhd3g97ChBzttuGnsw&s=09 "
+                  href={PRATHAMESH_TWITTER}
                   target="_blank"
                   title="X"
                   className="text-white hover:text-black"
@@ -286,7 +308,7 @@ const About = () => {
                 {/* LinkedIn */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/prathmesh-pachange-15b083190"
+                  href={PRATHAMESH_LINKEDIN}
                   target="_blank"
                   title="LinkedIn"
                   className="text-white hover:text-black"
@@ -303,7 +325,7 @@ const About = () => {
                 {/* Github */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://github.com/Prathmeshpachange "
+                  href={PRATHAMESH_GITHUB}
                   target="_blank"
                   title="GitHub"
                   className="text-white hover:text-black"
@@ -325,30 +347,29 @@ const About = () => {
                 <img
                   className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
                   src={Akansha}
-                  alt=""
+                  alt="Akansha Bhavsar"
                 />
 
                 <div className="mt-4 sm:mx-4 sm:mt-0">
                   <h1 className="text-xl font-semibold  capitalize md:text-2xl text-white group-hover:text-white">
-                    Akansha Bhavsar
+                    {AKANSHA_NAME}
                   </h1>
 
                   <p className="mt-2 capitalize text-gray-300 group-hover:text-gray-300">
-                    Figma Designer
+                    {AKANSHA_ROLE}
                   </p>
                 </div>
               </div>
 
               <p className="mt-4 capitalize text-gray-300 group-hover:text-gray-300">
-                Figma Designer crafting captivating user interfaces, driven by a
-                passion for design and enhancing user engagement.
+                {AKANSHA_INTRO}
               </p>
 
               <div className="flex mt-4 gap-6">
                 {/* Gmail Link */}
                 <a
                   rel="noopener noreferrer"
-                  href="mailto:akankshasujal007@gmail.com"
+                  href={`mailto:${AKANSHA_EMAIL}`}
                   target="_blank"
                   title="Email"
                   className="text-white hover:text-black"
@@ -366,7 +387,7 @@ const About = () => {
                 {/* X logo */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://twitter.com/AkankshaBh0909"
+                  href={AKANSHA_TWITTER}
                   target="_blank"
                   title="X"
                   className="text-white hover:text-black"
@@ -383,7 +404,7 @@ const About = () => {
                 {/* LinkedIn */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.linkedin.com/in/akanksha-bhavsar-7b2630223/"
+                  href={AKANSHA_LINKEDIN}
                   target="_blank"
                   title="LinkedIn"
                   className="text-white hover:text-black"
@@ -400,7 +421,7 @@ const About = () => {
                 {/* Github */}
                 <a
                   rel="noopener noreferrer"
-                  href="https://github.com/KANKSHA09"
+                  href={AKANSHA_GITHUB}
                   target="_blank"
                   title="GitHub"
                   className="text-white hover:text-black"

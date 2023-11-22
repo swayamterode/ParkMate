@@ -3,16 +3,22 @@ import Navbar from "./Navbar";
 import { AiOutlineLogout } from "react-icons/ai";
 import starman from "../assets/starman-animate.svg";
 
+import {
+  ERROR_MESSAGE,
+  SIGNUP_ROUTE_MESSAGE,
+  SIGNED_UP_MESSAGE,
+  GO_BACK_TO_HOME,
+  DOCUMENTATION_LINK_TEXT,
+  DOCUMENTATION_SOON_TEXT,
+  PRICING_LINK_TEXT,
+  PRICING_DESCRIPTION,
+  MEET_THE_TEAM_LINK_TEXT,
+  MEET_THE_TEAM_DESCRIPTION,
+} from "../constants/AlreadySignedInConstants";
+import useAlreadySignedIn from "../Hooks/useAlreadySignedIn";
+
 const AlreadySignedin = () => {
-  const isLoggedIn = () => {
-    return localStorage.getItem("token") !== null;
-  };
-
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/";
-  };
-
+  const { isLoggedIn, handleLogout } = useAlreadySignedIn();
   return (
     <div>
       <Navbar />
@@ -20,16 +26,12 @@ const AlreadySignedin = () => {
         <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
           <div className="wf-ull lg:w-1/2">
             <p className="text-sm font-medium text-blue-500 dark:text-blue-400 opacity-0">
-              409 error
+              {ERROR_MESSAGE}
             </p>
             <h1 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-              Seems like you landed again on the Signup Page.
+              {SIGNUP_ROUTE_MESSAGE}
             </h1>
-            <p className="mt-4 text-gray-400">
-              You are already Signed Up with{" "}
-              <span className="text-sky-400">ParkMate</span>, Do you want to go
-              to Home Or Logout?
-            </p>
+            <p className="mt-4 text-gray-400">{SIGNED_UP_MESSAGE}</p>
 
             <div className="flex items-center mt-6 gap-x-3">
               <Link
@@ -51,7 +53,7 @@ const AlreadySignedin = () => {
                   />
                 </svg>
 
-                <span>Go back to home</span>
+                <span>{GO_BACK_TO_HOME}</span>
               </Link>
               {isLoggedIn() && (
                 <div
@@ -70,7 +72,7 @@ const AlreadySignedin = () => {
                   href="#"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Documentation</span>
+                  <span>{DOCUMENTATION_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +91,7 @@ const AlreadySignedin = () => {
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Adding the Document Soon.
+                  {DOCUMENTATION_SOON_TEXT}
                 </p>
               </div>
 
@@ -98,7 +100,7 @@ const AlreadySignedin = () => {
                   to="/pricing"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Pricing</span>
+                  <span>{PRICING_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +119,7 @@ const AlreadySignedin = () => {
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  See our Parking Price and choose the one that fits your needs.
+                  {PRICING_DESCRIPTION}
                 </p>
               </div>
 
@@ -126,7 +128,7 @@ const AlreadySignedin = () => {
                   to="/about"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Meet the team</span>
+                  <span>{MEET_THE_TEAM_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +147,7 @@ const AlreadySignedin = () => {
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Check out our team members and their roles.
+                  {MEET_THE_TEAM_DESCRIPTION}
                 </p>
               </div>
             </div>

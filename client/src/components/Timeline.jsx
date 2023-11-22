@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import directionImg from "../assets/directions-animate.svg";
 import { HiArrowNarrowRight } from "react-icons/hi";
-
+import { timeline } from "../constants/TimelineConstants";
 const Steps = () => {
   return (
     <>
@@ -11,7 +11,7 @@ const Steps = () => {
           <div className="wf-ull lg:w-1/2">
             {/* heading */}
             <h1 className="mt-3 text-3xl font-bold text-white md:text-6xl md:text-left text-center">
-              Book Your Parking Spot in few steps
+              {timeline.title}
             </h1>
 
             <ol className="relative border-l border-gray-200 dark:border-gray-700 mt-6">
@@ -19,20 +19,19 @@ const Steps = () => {
               <li className="mb-10 ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  Step 1
+                  {timeline.step1.step}
                 </time>
                 <h3 className="text-lg font-semibold text-white">
-                  Register your Vehicle
+                  {timeline.step1.title}
                 </h3>
                 <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                  Register your vehicle with ParkMate for smooth, secure parking
-                  via our automated system—ensuring hassle-free experience.
+                  {timeline.step1.description}
                 </p>
                 <Link
                   to="/book"
                   className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 >
-                  Register Vehicle{" "}
+                  {timeline.step1.buttonText}
                   <HiArrowNarrowRight className="text-xl ml-2" />
                 </Link>
               </li>
@@ -40,44 +39,39 @@ const Steps = () => {
               <li className="mb-10 ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  Step 2
+                  {timeline.step2.step}
                 </time>
                 <h3 className="text-lg font-semibold text-white">
-                  Choose your Parking Location
+                  {timeline.step2.title}
                 </h3>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                  Select your ideal parking spot effortlessly. Streamline your
-                  parking experience. Now available in Pune!
+                  {timeline.step2.description}
                 </p>
               </li>
               {/* Choose Date */}
               <li className="mb-10 ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  Step 3
+                  {timeline.step3.step}
                 </time>
                 <h3 className="text-lg font-semibold text-white">
-                  Select your preferred parking date.
+                  {timeline.step3.title}
                 </h3>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                  Pick the date that suits you best for parking. Choose your
-                  preferred parking date for a seamless and convenient
-                  experience tailored to your needs.
+                  {timeline.step3.description}
                 </p>
               </li>
               {/* Time is fixed */}
               <li className="mb-10 ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  Step 4
+                  {timeline.step4.step}
                 </time>
                 <h3 className="text-lg font-semibold text-white">
-                  Parking available from 9:00 am to 9:00 pm.
+                  {timeline.step4.title}
                 </h3>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                  Our parking is currently open from 9:00 am to 9:00 pm. Stay
-                  tuned for future updates as we plan to expand our operating
-                  hours.
+                  {timeline.step4.description}
                 </p>
               </li>
 
@@ -85,21 +79,20 @@ const Steps = () => {
               <li className="ml-4">
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  Step 5
+                  {timeline.step5.step}
                 </time>
                 <h3 className="text-lg font-semibold text-white">
-                  Choose a vehicle from your registered list.
+                  {timeline.step5.title}
                 </h3>
                 <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-                  Pick a vehicle from your registered list for a convenient and
-                  swift experience. Streamline your choice for a hassle-free
-                  process.
+                  {timeline.step5.description}
                 </p>
                 <Link
                   to="/slot-booking"
                   className="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 >
-                  Book Slot Now <HiArrowNarrowRight className="text-xl ml-2" />
+                  {timeline.step5.buttonText}{" "}
+                  <HiArrowNarrowRight className="text-xl ml-2" />
                 </Link>
               </li>
             </ol>

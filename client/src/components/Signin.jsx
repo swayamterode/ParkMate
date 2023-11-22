@@ -1,111 +1,22 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import axios from "axios";
 import logo from "../assets/mainLogo.svg";
+import useSignIn from "../Hooks/useSignIn";
+import Spinner from "./Spinner";
 
 const Signin = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const navigate = useNavigate();
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [showPopup, setShowPopup] = useState(false);
-  const [loggedInUsername, setLoggedInUsername] = useState(""); // New state to store the logged-in username
-  const [userNotFound, setUserNotFound] = useState(""); // New state to store the login error
-  const [userPassword, setUserPassword] = useState(""); // New state to store the login error
-
-  // Check if the user is already logged in when the component mounts
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      // User is already logged in, redirect to home or dashboard
-      navigate("/login_");
-    }
-  }, [navigate]);
-
-  // Function to handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const newErrors = {}; // To store errors
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!isValidEmail(formData.email)) {
-      newErrors.email = "Invalid email format";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    }
-
-    setErrors(newErrors);
-
-    axios
-      .post("https://parkmatebackend.onrender.com/login", formData)
-      .then((res) => {
-        // console.log(res);
-        if (res.data.success) {
-          // Store the token in local storage
-          localStorage.setItem("token", res.data.token);
-
-          // Store the userId in local storage
-          localStorage.setItem("userId", res.data.userId);
-          setLoggedInUsername(formData.email); // Store the logged-in username
-          setShowPopup(true); // Show the popup
-
-          setTimeout(() => {
-            setShowPopup(false);
-            navigate("/");
-          }, 2300); // Adjust the time as needed
-        } else {
-          // if the email is not found in the database
-          if (res.data.message === "User does not exist") {
-            // Show a pop-up message indicating that the user was not found
-            setUserNotFound(true);
-
-            setTimeout(() => {
-              setUserNotFound(false);
-              navigate("/signup");
-            }, 2000); // Adjust the time as needed
-          }
-          // if the password is incorrect
-          else if (res.data.message === "Incorrect password") {
-            setUserPassword(true);
-            setTimeout(() => {
-              setUserPassword(false);
-            }, 2000);
-          }
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        // Handle other errors if necessary
-      });
-  };
-
-  // Function to validate email format using regular expression
-  const isValidEmail = (email) => {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailPattern.test(email);
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+  const {
+    handleSubmit,
+    errors,
+    formData,
+    handleChange,
+    loading,
+    showPopup,
+    userNotFound,
+    loggedInUsername,
+    userPassword,
+  } = useSignIn();
   return (
     <>
       <Navbar />
@@ -184,9 +95,9 @@ const Signin = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full px-8 py-3 rounded-md bg-sky-400 text-gray-900 font-bold"
+                    className="w-full px-8 py-3 rounded-md bg-sky-400 text-gray-900 font-bold relative"
                   >
-                    Sign in
+                    {loading ? <Spinner /> : "Sign in"}
                   </button>
                 </div>
                 <p className="px-6 text-sm text-center text-gray-400">
@@ -209,10 +120,10 @@ const Signin = () => {
                         Welcome, {loggedInUsername}! <br></br> you have been
                         signed in successfully!
                       </p>
-                      <div className="flex items-center justify-center text-center">
+                      <div className="flex items-center justify-center text-center mt-2">
                         <div className="animate-spin rounded-full h-6 w-6 mr- 3 border-t-4 border-blue-600"></div>
                         <p className="ml-2 text-white-500 ">
-                          Redirecting to home page..
+                          Redirecting to home page...
                         </p>
                       </div>
                     </div>

@@ -1,18 +1,24 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { AiOutlineLogout } from "react-icons/ai";
 import directionImg from "../assets/directions-animate.svg";
+
+import {
+  ERROR_MESSAGE,
+  LOGIN_ROUTE_MESSAGE,
+  LOGGED_IN_MESSAGE,
+  GO_BACK_TO_HOME,
+  DOCUMENTATION_LINK_TEXT,
+  DOCUMENTATION_SOON_TEXT,
+  PRICING_LINK_TEXT,
+  PRICING_DESCRIPTION,
+  MEET_THE_TEAM_LINK_TEXT,
+  MEET_THE_TEAM_DESCRIPTION,
+} from "../constants/AlreadyLoggedInConstants";
+import useAlreadySignedIn from "../Hooks/useAlreadySignedIn";
+
 const AlreadyLoggedin = () => {
-  const isLoggedIn = () => {
-    return localStorage.getItem("token") !== null;
-  };
-
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/";
-  };
-
+  const { isLoggedIn, handleLogout } = useAlreadySignedIn();
   return (
     <div>
       <Navbar />
@@ -20,14 +26,12 @@ const AlreadyLoggedin = () => {
         <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
           <div className="wf-ull lg:w-1/2">
             <p className="text-sm font-medium text-blue-500 dark:text-blue-400 opacity-0">
-              409 error
+              {ERROR_MESSAGE}
             </p>
             <h1 className="mt-3 text-2xl font-semibold text-white md:text-3xl">
-              Seems like you landed on the Login route again!
+              {LOGIN_ROUTE_MESSAGE}
             </h1>
-            <p className="mt-4 text-gray-400">
-              You are already logged in, Do you want to go to Home Or Logout?
-            </p>
+            <p className="mt-4 text-gray-400">{LOGGED_IN_MESSAGE}</p>
 
             <div className="flex items-center mt-6 gap-x-3">
               <Link
@@ -38,18 +42,18 @@ const AlreadyLoggedin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
                   className="w-5 h-5 rtl:rotate-180"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
                   />
                 </svg>
 
-                <span>Go back to home</span>
+                <span>{GO_BACK_TO_HOME}</span>
               </Link>
               {isLoggedIn() && (
                 <div
@@ -68,26 +72,26 @@ const AlreadyLoggedin = () => {
                   href="#"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Documentation</span>
+                  <span>{DOCUMENTATION_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     className="w-5 h-5 rtl:rotate-180"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                     />
                   </svg>
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Adding the Document Soon.
+                  {DOCUMENTATION_SOON_TEXT}
                 </p>
               </div>
 
@@ -96,26 +100,26 @@ const AlreadyLoggedin = () => {
                   to="/pricing"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Pricing</span>
+                  <span>{PRICING_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     className="w-5 h-5 rtl:rotate-180"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                     />
                   </svg>
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  See our Parking Price and choose the one that fits your needs.
+                  {PRICING_DESCRIPTION}
                 </p>
               </div>
 
@@ -124,26 +128,26 @@ const AlreadyLoggedin = () => {
                   to="/about"
                   className="inline-flex items-center text-sm text-blue-500 gap-x-2 dark:text-blue-400 hover:underline"
                 >
-                  <span>Meet the team</span>
+                  <span>{MEET_THE_TEAM_LINK_TEXT}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     className="w-5 h-5 rtl:rotate-180"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                     />
                   </svg>
                 </Link>
 
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Check out our team members and their roles.
+                  {MEET_THE_TEAM_DESCRIPTION}
                 </p>
               </div>
             </div>

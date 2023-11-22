@@ -1,85 +1,22 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { SiDirectus } from "react-icons/si";
 import { GoAlertFill } from "react-icons/go";
 import { BsCheckCircle } from "react-icons/bs";
 import Navbar from "./Navbar";
-import axios from "axios";
+
 import logo from "../assets/mainLogo.svg";
+import useVehicleRegistration from "../Hooks/useVehicleRegistration";
 
 const VehicleRegistrationOnSignup = () => {
-  const [formData, setFormData] = useState({
-    license_number: "",
-  });
-  const navigate = useNavigate();
-
-  const [showPopup, setShowPopup] = useState(false);
-  const [showLoginPopup, setShowLoginPopup] = useState(false);
-  const [errors, setErrors] = useState("");
-
-  const userId = localStorage.getItem("userId"); // Retrieve userId from localStorage
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      // Send a POST request to your server
-      const response = await axios.post(
-        "https://parkmatebackend.onrender.com/vehicle-registration",
-        {
-          userId: userId, // Send the userId
-          license_number: formData.license_number, // Adjust this based on your form data
-        }
-      );
-
-      // Check the response and handle accordingly
-      if (response.data.message === "Vehicle Registered") {
-        // Show the success popup
-        setShowPopup(true);
-        setTimeout(() => {
-          // Hide the success popup after 1 second
-          setShowPopup(false);
-
-          // Show the redirecting popup
-          setShowLoginPopup(true);
-
-          setTimeout(() => {
-            // Hide the redirecting popup after 3 seconds
-            setShowLoginPopup(false);
-
-            // Navigate to the "/login" page
-            navigate("/login");
-          }, 3000); // Hide the redirecting popup after 3 seconds
-        }, 1000); // Hide the success popup after 1 second
-      } else {
-        setErrors(response.data.message);
-        setTimeout(() => {
-          setErrors("");
-        }, 3000);
-        console.error(response.data.message);
-      }
-    } catch (error) {
-      setErrors("An error occurred during vehicle registration");
-      setTimeout(() => {
-        setErrors("");
-      }, 3000);
-    }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Scroll to top
-  const scrollToTop = () => {
-    window.scrollTo(0, 0); // Scrolls to the top of the page
-  };
-
+  const {
+    showPopup,
+    scrollToTop,
+    showLoginPopup,
+    errors,
+    handleSubmit,
+    handleChange,
+    formData,
+  } = useVehicleRegistration();
   return (
     <>
       <Navbar />
