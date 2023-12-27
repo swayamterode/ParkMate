@@ -11,7 +11,7 @@ const Hero = () => {
   };
   return (
     <>
-      <section className="bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] mt-[70px]">
+      <section className="bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] mt-[70px] h-screen">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
           <Link
             to="/slot-booking"

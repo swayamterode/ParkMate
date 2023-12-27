@@ -70,16 +70,16 @@ const Navbar = () => {
             onClick={scrollToTop}
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            arkMate
+            arkbuddy
           </span>
         </Link>
         <div className="flex items-center md:order-2 relative">
           {!isLoggedIn() && (
-            <div className="mr-2 text-white px-3 py-1 rounded-full font-bold bg-green-500 hover:bg-green-600 cursor-pointer sm:mr-4">
-              <Link to="/login" onClick={scrollToTop}>
+            <Link to="/login" onClick={scrollToTop}>
+              <div className="mr-2 text-white px-3 py-1 rounded-full font-bold bg-green-500 hover:bg-green-600 cursor-pointer sm:mr-4">
                 Login 👋🏼
-              </Link>
-            </div>
+              </div>
+            </Link>
           )}
           {isLoggedIn() && (
             <button
